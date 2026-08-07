@@ -9,15 +9,21 @@ Responsabilidades:
 """
 
 import os
+import queue
 import random
 import subprocess
 import logging
+import threading
 from typing import Optional
 
 from config import MODELO_VOZ, SAMPLE_RATE_VOZ
 from eventos.bus import bus, Eventos
 
 logger = logging.getLogger("jarvis.voz")
+
+_tts_queue: "queue.Queue[Optional[str]]" = queue.Queue()
+_tts_worker: Optional[threading.Thread] = None
+_tts_lock = threading.Lock()
 
 # ─────────────────────────────────────────────────────────────────────────────
 # POOL DE RESPUESTAS NATURALES
@@ -174,35 +180,34 @@ def frase_aleatoria(contexto: str = "confirmacion") -> str:
     return elegida
 
 
-def hablar(texto: str) -> None:
+def _obtener_piper_cmd() -> str:
+    """Devuelve el ejecutable Piper preferente para el venv actual."""
+    venv_piper = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "venv", "bin", "piper"
+    )
+    return venv_piper if os.path.exists(venv_piper) else "piper"
+
+
+def _reproducir_tts(texto: str) -> None:
     """
-    Sintetiza y reproduce el texto usando Piper TTS + aplay.
-
-    Emite eventos jarvis.hablando al inicio y jarvis.fin_habla al terminar.
-    Usa subprocess con lista de argumentos para evitar shell injection.
-    Si el modelo de voz no está disponible, solo imprime en consola.
-
-    Args:
-        texto: Texto a sintetizar. Puede contener cualquier carácter.
+    Sintetiza y reproduce una frase. Se ejecuta exclusivamente en el worker TTS.
     """
     print(f"\n🤖 Jarvis: {texto}")
     logger.info("TTS: %s", texto)
 
     # Notificar a la UI que Jarvis está hablando
     bus.emitir(Eventos.HABLANDO, {"texto": texto})
+    bus.emitir(Eventos.VOICE_STARTED, {"texto": texto})
 
     if not os.path.exists(MODELO_VOZ):
         logger.warning("Modelo de voz no encontrado: %s", MODELO_VOZ)
         bus.emitir(Eventos.FIN_HABLA, {"texto": texto})
+        bus.emitir(Eventos.VOICE_FINISHED, {"texto": texto})
         return
 
     try:
-        # Encontrar el ejecutable piper dentro del venv
-        venv_piper = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-            "venv", "bin", "piper"
-        )
-        piper_cmd = venv_piper if os.path.exists(venv_piper) else "piper"
+        piper_cmd = _obtener_piper_cmd()
 
         # Piper: lee desde stdin, escribe PCM raw en stdout
         proc_piper = subprocess.Popen(
@@ -228,13 +233,76 @@ def hablar(texto: str) -> None:
         proc_piper.wait()
         proc_aplay.wait()
 
-    except FileNotFoundError:
-        logger.error("No se encontró el ejecutable piper.")
+    except FileNotFoundError as e:
+        logger.error("No se encontró el ejecutable requerido para TTS: %s", e)
+        bus.emitir(Eventos.ERROR, {"mensaje": "TTS no disponible: falta Piper o aplay."})
     except Exception as e:
         logger.error("Error en TTS: %s", e)
+        bus.emitir(Eventos.ERROR, {"mensaje": f"Error en TTS: {e}"})
     finally:
         # Siempre notificar que terminó de hablar
         bus.emitir(Eventos.FIN_HABLA, {"texto": texto})
+        bus.emitir(Eventos.VOICE_FINISHED, {"texto": texto})
+
+
+def _worker_tts() -> None:
+    """Consume la cola de voz en orden, evitando voces simultáneas."""
+    while True:
+        texto = _tts_queue.get()
+        if texto is None:
+            _tts_queue.task_done()
+            break
+        try:
+            _reproducir_tts(texto)
+        finally:
+            _tts_queue.task_done()
+
+
+def _asegurar_worker() -> None:
+    global _tts_worker
+    with _tts_lock:
+        if _tts_worker and _tts_worker.is_alive():
+            return
+        _tts_worker = threading.Thread(target=_worker_tts, daemon=True, name="JarvisTTSWorker")
+        _tts_worker.start()
+
+
+def hablar(texto: str) -> None:
+    """
+    Encola texto para TTS sin bloquear el hilo llamador.
+
+    El hilo GTK nunca ejecuta Piper directamente. Todas las frases se reproducen
+    en un único worker, en orden FIFO, para evitar voces simultáneas.
+    """
+    if not texto:
+        return
+    _asegurar_worker()
+    _tts_queue.put(str(texto))
+
+
+def esperar_fin_habla(timeout: Optional[float] = None) -> bool:
+    """Espera a que la cola TTS se vacíe. Útil para pruebas controladas."""
+    if timeout is None:
+        _tts_queue.join()
+        return True
+
+    terminado = threading.Event()
+
+    def _joiner() -> None:
+        _tts_queue.join()
+        terminado.set()
+
+    threading.Thread(target=_joiner, daemon=True).start()
+    return terminado.wait(timeout)
+
+
+def detener_tts() -> None:
+    """Solicita detener el worker TTS al cerrar Jarvis."""
+    global _tts_worker
+    if _tts_worker and _tts_worker.is_alive():
+        _tts_queue.put(None)
+        _tts_worker.join(timeout=2.0)
+    _tts_worker = None
 
 
 def hablar_contexto(contexto: str, sufijo: Optional[str] = None) -> None:

@@ -146,7 +146,24 @@ class PanelEstado(Gtk.Box):
         """
         self._estado_actual = estado
         icono, texto = self.ICONOS_ESTADO.get(estado, ("●", estado.upper()))
-        color = self.COLORES_ESTADO.get(estado, "#6B8AAA")
+
+        try:
+            from temas.gestor_temas import gestor_temas
+            paleta = gestor_temas.obtener_paleta()
+            colores = {
+                "reposo":       paleta.TEXT_DIM,
+                "despertando":  paleta.PRIMARY,
+                "escuchando":   paleta.PRIMARY,
+                "procesando":   paleta.SECONDARY,
+                "ejecutando":   paleta.ACCENT,
+                "hablando":     paleta.PRIMARY,
+                "exito":        paleta.SUCCESS,
+                "error":        paleta.ERROR,
+                "esperando":    paleta.WARNING,
+            }
+            color = colores.get(estado, paleta.PRIMARY)
+        except Exception:
+            color = self.COLORES_ESTADO.get(estado, "#6B8AAA")
 
         self._dot_estado.set_markup(f'<span foreground="{color}" size="large">●</span>')
         self._lbl_estado.set_markup(f'<span foreground="{color}" font_weight="bold">{texto}</span>')
@@ -162,8 +179,13 @@ class PanelEstado(Gtk.Box):
         """Actualiza la intención NLP detectada."""
         if intencion and intencion != "DESCONOCIDO":
             conf_str = f" ({confianza:.0f}%)" if confianza > 0 else ""
+            try:
+                from temas.gestor_temas import gestor_temas
+                color_accent = gestor_temas.obtener_paleta().ACCENT
+            except Exception:
+                color_accent = "#00FFEE"
             self._lbl_intencion.set_markup(
-                f'<span font_family="monospace" foreground="#00FFEE">{intencion}{conf_str}</span>'
+                f'<span font_family="monospace" foreground="{color_accent}">{intencion}{conf_str}</span>'
             )
         else:
             self._lbl_intencion.set_text("—")

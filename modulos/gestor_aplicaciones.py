@@ -18,6 +18,8 @@ from typing import Optional, List, Dict, Tuple, Any
 
 import psutil  # type: ignore[import]
 
+from eventos.bus import bus, Eventos
+
 logger = logging.getLogger("jarvis.gestor_aplicaciones")
 
 
@@ -63,7 +65,7 @@ ALIAS_PROCESOS_VENTANAS: Dict[str, Dict[str, List[str]]] = {
         "exec": ["tilix"],
     },
     "terminal_gnome": {
-        "nombres": ["gnome terminal", "terminal gnome"],
+        "nombres": ["gnome terminal", "terminal gnome", "terminal", "consola"],
         "clases": ["gnome-terminal-server", "Gnome-terminal"],
         "procesos": ["gnome-terminal", "gnome-terminal-server"],
         "exec": ["gnome-terminal"],
@@ -93,6 +95,15 @@ ALIAS_PROCESOS_VENTANAS: Dict[str, Dict[str, List[str]]] = {
         "exec": ["opera-gx", "opera"],
     },
 }
+
+
+def _infos_alias(nombre_app: str) -> List[Dict[str, List[str]]]:
+    """Devuelve todas las definiciones de alias compatibles con un nombre."""
+    nombre_lower = nombre_app.lower().strip()
+    return [
+        info for clave, info in ALIAS_PROCESOS_VENTANAS.items()
+        if nombre_lower == clave or nombre_lower in info["nombres"]
+    ]
 
 
 @dataclass
@@ -232,11 +243,9 @@ class GestorAplicaciones:
         nombre_lower = nombre_app.lower().strip()
         procesos_objetivo: List[str] = [nombre_lower]
 
-        # Buscar en alias conocidos
-        for clave, info in ALIAS_PROCESOS_VENTANAS.items():
-            if nombre_lower in info["nombres"] or nombre_lower == clave:
-                procesos_objetivo.extend(info["procesos"])
-                break
+        # Buscar en todos los alias conocidos compatibles
+        for info in _infos_alias(nombre_lower):
+            procesos_objetivo.extend(info["procesos"])
 
         procesos_encontrados: List[psutil.Process] = []
         for p in psutil.process_iter(["pid", "name", "cmdline"]):
@@ -270,11 +279,9 @@ class GestorAplicaciones:
         clases_objetivo: List[str] = [nombre_lower]
         nombres_objetivo: List[str] = [nombre_lower]
 
-        for clave, info in ALIAS_PROCESOS_VENTANAS.items():
-            if nombre_lower in info["nombres"] or nombre_lower == clave:
-                clases_objetivo.extend([c.lower() for c in info["clases"]])
-                nombres_objetivo.extend([n.lower() for n in info["nombres"]])
-                break
+        for info in _infos_alias(nombre_lower):
+            clases_objetivo.extend([c.lower() for c in info["clases"]])
+            nombres_objetivo.extend([n.lower() for n in info["nombres"]])
 
         # 1. Coincidencia por WM_CLASS exacto/parcial
         for v in ventanas:
@@ -318,6 +325,10 @@ class GestorAplicaciones:
         ok, _ = self._ejecutar_comando(["xdotool", "windowactivate", window_id])
         return ok
 
+    def ensure_application_open(self, nombre_app: str, exec_cmd: Optional[str] = None) -> Tuple[bool, str]:
+        """Alias público en inglés para abrir/enfocar sin duplicar instancias."""
+        return self.abrir_aplicacion(nombre_app, exec_cmd)
+
     def abrir_aplicacion(self, nombre_app: str, exec_cmd: Optional[str] = None) -> Tuple[bool, str]:
         """
         Abre o enfoca una aplicación.
@@ -336,6 +347,7 @@ class GestorAplicaciones:
             self.estado.ultima_ventana_activa = ventana_existente.titulo
             msg = f"La aplicación {nombre_app} ya estaba abierta. Se ha traído al frente."
             logger.info(msg)
+            bus.emitir(Eventos.APPLICATION_DETECTED, {"app": nombre_app, "ventana": ventana_existente.to_dict()})
             return True, msg
 
         # Si no existe ventana, determinar comando Exec
@@ -346,13 +358,13 @@ class GestorAplicaciones:
         else:
             # Buscar en mapeo interno
             nombre_lower = nombre_app.lower().strip()
-            for clave, info in ALIAS_PROCESOS_VENTANAS.items():
-                if nombre_lower in info["nombres"] or nombre_lower == clave:
-                    for ex in info["exec"]:
-                        path = shutil.which(ex)
-                        if path:
-                            cmd_args = [path]
-                            break
+            for info in _infos_alias(nombre_lower):
+                for ex in info["exec"]:
+                    path = shutil.which(ex)
+                    if path:
+                        cmd_args = [path]
+                        break
+                if cmd_args:
                     break
 
             if not cmd_args:
@@ -376,6 +388,7 @@ class GestorAplicaciones:
                 self.enfocar_ventana(v_nueva.window_id)
                 self.estado.ultima_ventana_activa = v_nueva.titulo
 
+            bus.emitir(Eventos.APPLICATION_OPENED, {"app": nombre_app})
             return True, f"Abriendo {nombre_app}."
         except Exception as e:
             msg = f"Error al abrir la aplicación {nombre_app}: {e}"
@@ -416,6 +429,7 @@ class GestorAplicaciones:
             if not ventana_check:
                 msg = f"Se cerró {nombre_app} correctamente."
                 logger.info(msg)
+                bus.emitir(Eventos.APPLICATION_CLOSED, {"app": nombre_app})
                 return True, msg
 
         # Actualizar lista de procesos vivos
@@ -436,6 +450,7 @@ class GestorAplicaciones:
 
         if not procesos_vivos:
             msg = f"{nombre_app} finalizada correctamente."
+            bus.emitir(Eventos.APPLICATION_CLOSED, {"app": nombre_app})
             return True, msg
 
         # 3. Si aún continúa viva -> SIGKILL
@@ -448,6 +463,7 @@ class GestorAplicaciones:
 
         time.sleep(0.5)
         msg = f"{nombre_app} fue forzada a cerrar."
+        bus.emitir(Eventos.APPLICATION_CLOSED, {"app": nombre_app, "forzado": True})
         return True, msg
 
     def minimizar_aplicacion(self, nombre_app: str) -> Tuple[bool, str]:
@@ -485,6 +501,34 @@ class GestorAplicaciones:
             return True, f"Maximizando {nombre_app}."
         return False, f"No pude maximizar {nombre_app}."
 
+    def abrir_url_en_navegador(self, url: str, navegador_preferido: str = "chrome") -> Tuple[bool, str]:
+        """
+        Abre una URL reutilizando una ventana de navegador cuando sea posible.
+
+        Si ya hay navegador abierto, solo lo enfoca para evitar pestañas/procesos
+        duplicados en macros repetidas. Si no hay ventana, lanza el navegador con
+        la URL inicial.
+        """
+        for nombre in [navegador_preferido, "chrome", "firefox"]:
+            ventana = self.buscar_ventana(nombre)
+            if ventana:
+                self.enfocar_ventana(ventana.window_id)
+                return True, f"El navegador ya estaba abierto. Se ha traído al frente."
+
+        ejecutables = ["google-chrome-stable", "google-chrome", "chromium", "firefox"]
+        for exe in ejecutables:
+            path = shutil.which(exe)
+            if not path:
+                continue
+            try:
+                subprocess.Popen([path, url], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                bus.emitir(Eventos.APPLICATION_OPENED, {"app": exe, "url": url})
+                return True, f"Abriendo navegador en {url}."
+            except Exception as e:
+                logger.error("Error abriendo navegador %s: %s", exe, e)
+
+        return False, "No se encontró un navegador disponible."
+
     # ── Consultas del Estado del Escritorio ───────────────────────────────────
 
     def obtener_ventana_activa(self) -> Optional[dict]:
@@ -504,14 +548,18 @@ class GestorAplicaciones:
                 for v in ventanas:
                     if v.window_id.lower() == w_hex.lower() or int(v.window_id, 16) == int(w_id):
                         self.estado.ultima_ventana_activa = v.titulo
-                        return v.to_dict()
+                        datos = v.to_dict()
+                        bus.emitir(Eventos.APPLICATION_DETECTED, {"app": self.obtener_nombre_amigable_app(datos), "ventana": datos})
+                        return datos
             except ValueError:
                 pass
 
             ok_name, name = self._ejecutar_comando(["xdotool", "getwindowname", w_id])
             if ok_name and name:
                 self.estado.ultima_ventana_activa = name
-                return {"window_id": w_id, "titulo": name, "wm_class": "", "pid": 0}
+                datos = {"window_id": w_id, "titulo": name, "wm_class": "", "pid": 0}
+                bus.emitir(Eventos.APPLICATION_DETECTED, {"app": self.obtener_nombre_amigable_app(datos), "ventana": datos})
+                return datos
 
         # Método 2: xprop -root _NET_ACTIVE_WINDOW
         ok, xprop_out = self._ejecutar_comando(["xprop", "-root", "_NET_ACTIVE_WINDOW"])
@@ -523,7 +571,9 @@ class GestorAplicaciones:
                 for v in ventanas:
                     if int(v.window_id, 16) == int(hex_id, 16):
                         self.estado.ultima_ventana_activa = v.titulo
-                        return v.to_dict()
+                        datos = v.to_dict()
+                        bus.emitir(Eventos.APPLICATION_DETECTED, {"app": self.obtener_nombre_amigable_app(datos), "ventana": datos})
+                        return datos
 
         return None
 

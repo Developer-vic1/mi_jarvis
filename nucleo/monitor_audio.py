@@ -67,7 +67,7 @@ class MonitorAudio:
 
         self._crear_pyaudio()
         if self._pyaudio is None:
-            bus.emitir(Eventos.ERROR, {"mensaje": "PyAudio no está disponible para el monitor de audio."})
+            bus.emitir(Eventos.ERROR, {"mensaje": "Micrófono no disponible"})
             return
 
         self._stop_event.clear()
@@ -95,26 +95,40 @@ class MonitorAudio:
                 self._pyaudio.terminate()
         except Exception as e:
             logger.debug("Error terminando PyAudio: %s", e)
+        finally:
+            self._pyaudio = None
+            self._pyaudio_module = None
 
         logger.info("MonitorAudio detenido.")
 
     def _abrir_stream(self) -> bool:
-        """Intenta abrir el stream de micrófono para monitorización."""
+        """Intenta abrir el stream del micrófono físico resuelto por AudioSecurity."""
         if self._pyaudio_module is None:
             logger.error("No hay módulo PyAudio disponible para abrir el stream.")
             return False
 
+        from nucleo.audio_security import gestor_audio_security
+        idx, nombre = gestor_audio_security.resolver_microfono_fisico()
+        if idx is None:
+            logger.error("MonitorAudio: No se encontró ningún micrófono físico. Stream no abierto.")
+            return False
+
         try:
-            self._stream = self._pyaudio.open(
-                format=self._pyaudio_module.paInt16,
-                channels=1,
-                rate=self.rate,
-                input=True,
-                frames_per_buffer=self.chunk,
-            )
+            kwargs = {
+                "format": self._pyaudio_module.paInt16,
+                "channels": 1,
+                "rate": self.rate,
+                "input": True,
+                "frames_per_buffer": self.chunk,
+            }
+            if idx is not None:
+                kwargs["input_device_index"] = idx
+
+            self._stream = self._pyaudio.open(**kwargs)
+            logger.info("MonitorAudio: Stream abierto en micrófono físico '%s' (Índice %d).", nombre, idx)
             return True
         except Exception as e:
-            logger.error("No se pudo abrir el stream de micrófono: %s", e)
+            logger.error("No se pudo abrir el stream de micrófono físico: %s", e)
             return False
 
     def _calcular_nivel(self, frame_data: bytes) -> float:
@@ -136,8 +150,10 @@ class MonitorAudio:
     def _run(self) -> None:
         """Bucle principal del monitor de audio."""
         if not self._abrir_stream():
-            bus.emitir(Eventos.ERROR, {"mensaje": "No se pudo activar el monitor de audio."})
+            bus.emitir(Eventos.ERROR, {"mensaje": "Micrófono no disponible"})
             return
+
+        from nucleo.audio_security import gestor_audio_security
 
         while not self._stop_event.is_set():
             try:
@@ -145,6 +161,15 @@ class MonitorAudio:
             except Exception as e:
                 logger.debug("Error leyendo frame de audio: %s", e)
                 time.sleep(0.15)
+                continue
+
+            # Si JARVIS está hablando por TTS, forzar nivel a 0 y no activar micrófono
+            if gestor_audio_security.esta_mic_pausado_por_tts():
+                bus.emitir(Eventos.AUDIO_LEVEL, {"nivel": 0.0})
+                if self._active_state:
+                    self._active_state = False
+                    bus.emitir(Eventos.MICROPHONE_IDLE, {"nivel": 0.0})
+                time.sleep(self.poll_interval)
                 continue
 
             nivel = self._calcular_nivel(frame)

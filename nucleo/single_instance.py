@@ -71,8 +71,8 @@ class SingleInstance:
             False si ya había una instancia (se le envió señal 'show').
         """
         # 1. Intentar conectar a instancia existente
+        sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         try:
-            sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
             sock.settimeout(_CONNECT_TIMEOUT)
             sock.connect(_SOCKET_PATH)
             # Hay una instancia en ejecución → enviarle señal de mostrar
@@ -82,10 +82,12 @@ class SingleInstance:
                 logger.info("Instancia existente reconoció la señal: %s", ack)
             except Exception:
                 pass
-            sock.close()
             logger.info("Ya existe una instancia de Jarvis. Enviando señal 'show'.")
             return False
-        except (ConnectionRefusedError, FileNotFoundError, OSError):
+        except socket.timeout:
+            logger.warning("El socket de instancia única no respondió; evitando una instancia duplicada.")
+            return False
+        except (ConnectionRefusedError, FileNotFoundError):
             # No hay instancia previa → intentar limpiar socket viejo si existe
             try:
                 os.unlink(_SOCKET_PATH)
@@ -93,6 +95,16 @@ class SingleInstance:
                 pass
             except Exception as e:
                 logger.debug("No se pudo limpiar socket viejo: %s", e)
+        except OSError as e:
+            if os.path.exists(_SOCKET_PATH):
+                logger.warning("No se pudo contactar la instancia existente (%s); evitando duplicado.", e)
+                return False
+            logger.debug("Socket single-instance no disponible: %s", e)
+        finally:
+            try:
+                sock.close()
+            except Exception:
+                pass
 
         # 2. Crear socket servidor (esta es la primera instancia)
         try:

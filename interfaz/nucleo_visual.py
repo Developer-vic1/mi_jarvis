@@ -27,6 +27,11 @@ from typing import List, Optional
 
 import gi
 gi.require_version("Gtk", "4.0")
+try:
+    gi.require_foreign("cairo")
+except Exception:
+    pass
+import cairo
 from gi.repository import Gtk, GLib, Gdk
 
 logger = logging.getLogger("jarvis.interfaz.nucleo_visual")
@@ -393,45 +398,78 @@ class NucleoVisual(Gtk.DrawingArea):
 
     def _dibujar(self, area: Gtk.DrawingArea, cr, width: int, height: int) -> None:
         """Función principal de renderizado. Llamada por GTK en cada frame."""
-        cx, cy = width / 2, height / 2
-        r = min(width, height) / 2 - 10
+        try:
+            cx, cy = width / 2, height / 2
+            r = min(width, height) / 2 - 10
 
-        # Colores del estado actual
-        color = self._get_color_estado()
-        cr_r, cr_g, cr_b = color
+            # Colores del estado actual
+            color = self._get_color_estado()
+            cr_r, cr_g, cr_b = color
 
-        # Limpiar con fondo transparente
-        cr.save()
-        cr.set_operator(1)  # OPERATOR_OVER
-        cr.set_source_rgba(0, 0, 0, 0)
-        cr.paint()
-        cr.restore()
+            # Limpiar con fondo transparente
+            cr.save()
+            cr.set_operator(1)  # OPERATOR_OVER
+            cr.set_source_rgba(0, 0, 0, 0)
+            cr.paint()
+            cr.restore()
 
-        # Aplicar vibración si hay error
-        if self._estado == self.ESTADO_ERROR:
-            cr.translate(self._vibra_x, self._vibra_y)
+            # Aplicar vibración si hay error
+            if self._estado == self.ESTADO_ERROR:
+                cr.translate(self._vibra_x, self._vibra_y)
 
-        # ── 1. Resplandor exterior difuso ────────────────────────────────────
-        self._dibujar_resplandor(cr, cx, cy, r, cr_r, cr_g, cr_b)
+            # ── 1. Resplandor exterior difuso ────────────────────────────────────
+            self._dibujar_resplandor(cr, cx, cy, r, cr_r, cr_g, cr_b)
 
-        # ── 2. Ondas de expansión ────────────────────────────────────────────
-        self._dibujar_ondas(cr, cx, cy, r, cr_r, cr_g, cr_b)
+            # ── 2. Ondas de expansión ────────────────────────────────────────────
+            self._dibujar_ondas(cr, cx, cy, r, cr_r, cr_g, cr_b)
 
-        # ── 3. Anillos de energía ────────────────────────────────────────────
-        self._dibujar_anillos(cr, cx, cy, r, cr_r, cr_g, cr_b)
+            # ── 3. Anillos de energía ────────────────────────────────────────────
+            self._dibujar_anillos(cr, cx, cy, r, cr_r, cr_g, cr_b)
 
-        # ── 4. Partículas orbitales ──────────────────────────────────────────
-        self._dibujar_particulas(cr, cx, cy, r, cr_r, cr_g, cr_b)
+            # ── 4. Conexiones tipo red neuronal (PROCESANDO / EJECUTANDO) ───────
+            if self._estado in (self.ESTADO_PROCESANDO, self.ESTADO_EJECUTANDO, self.ESTADO_DESPERTANDO):
+                self._dibujar_red_neural(cr, cx, cy, r, cr_r, cr_g, cr_b)
 
-        # ── 5. Núcleo central (esfera) ───────────────────────────────────────
-        self._dibujar_nucleo(cr, cx, cy, r, cr_r, cr_g, cr_b)
+            # ── 5. Partículas orbitales ──────────────────────────────────────────
+            self._dibujar_particulas(cr, cx, cy, r, cr_r, cr_g, cr_b)
 
-        # ── 6. Waveform de audio (en estado HABLANDO/ESCUCHANDO) ─────────────
-        if self._estado in (self.ESTADO_HABLANDO, self.ESTADO_ESCUCHANDO):
-            self._dibujar_waveform(cr, cx, cy, r, cr_r, cr_g, cr_b)
+            # ── 6. Núcleo central (esfera) ───────────────────────────────────────
+            self._dibujar_nucleo(cr, cx, cy, r, cr_r, cr_g, cr_b)
 
-        # ── 7. Indicador de estado (punto central) ───────────────────────────
-        self._dibujar_punto_central(cr, cx, cy, cr_r, cr_g, cr_b)
+            # ── 7. Waveform de audio (en estado HABLANDO/ESCUCHANDO) ─────────────
+            if self._estado in (self.ESTADO_HABLANDO, self.ESTADO_ESCUCHANDO):
+                self._dibujar_waveform(cr, cx, cy, r, cr_r, cr_g, cr_b)
+
+            # ── 8. Indicador de estado (punto central) ───────────────────────────
+            self._dibujar_punto_central(cr, cx, cy, cr_r, cr_g, cr_b)
+
+        except Exception as e:
+            logger.error("Error en _dibujar NucleoVisual: %s", e)
+
+    def _dibujar_red_neural(self, cr, cx, cy, r, cr_r, cr_g, cr_b):
+        """Dibuja conexiones de energía tipo red neuronal entre partículas cercanas."""
+        diam = min(cx * 2, cy * 2)
+        coords = []
+        for p in self._particulas:
+            px = p.x * diam - (diam / 2 - cx)
+            py = p.y * diam - (diam / 2 - cy)
+            coords.append((px, py, p.alpha * p.vida))
+
+        max_dist_sq = (r * 0.45) ** 2
+        cr.set_line_width(0.8)
+        for i in range(len(coords)):
+            x1, y1, a1 = coords[i]
+            for j in range(i + 1, min(i + 6, len(coords))):
+                x2, y2, a2 = coords[j]
+                dist_sq = (x2 - x1) ** 2 + (y2 - y1) ** 2
+                if dist_sq < max_dist_sq:
+                    factor = 1.0 - (dist_sq / max_dist_sq)
+                    alpha_linea = factor * min(a1, a2) * self._intensidad * 0.6
+                    if alpha_linea > 0.03:
+                        cr.set_source_rgba(cr_r, cr_g, cr_b, alpha_linea)
+                        cr.move_to(x1, y1)
+                        cr.line_to(x2, y2)
+                        cr.stroke()
 
     def _dibujar_resplandor(self, cr, cx, cy, r, cr_r, cr_g, cr_b):
         """Dibuja el halo de resplandor exterior."""

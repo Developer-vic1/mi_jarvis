@@ -140,6 +140,92 @@ class PluginDesarrollo(plugins.BasePlugin):
             return handler(entidades, contexto)
         return "No reconocí ese comando de desarrollo."
 
+    # ── Git ───────────────────────────────────────────────────────────────────
+
+    def _git_pull(self, entidades: dict, contexto: dict) -> str:
+        ok, salida = _ejecutar_git(["pull"])
+        if ok:
+            if "Already up to date" in salida or "Ya está actualizado" in salida:
+                return "El repositorio ya está actualizado."
+            return f"Git pull completado. {salida[:100]}"
+        return f"Error en git pull: {salida[:100]}"
+
+    def _git_status(self, entidades: dict, contexto: dict) -> str:
+        ok, salida = _ejecutar_git(["status", "--short"])
+        if not ok:
+            return f"Error al consultar git status: {salida[:100]}"
+        if not salida:
+            return "El repositorio está limpio. No hay cambios pendientes."
+        lineas = salida.split("\n")
+        num = len(lineas)
+        return f"Hay {num} cambio{'s' if num > 1 else ''} pendiente{'s' if num > 1 else ''}. {salida[:120]}"
+
+    def _git_log(self, entidades: dict, contexto: dict) -> str:
+        ok, salida = _ejecutar_git(["log", "--oneline", "-5"])
+        if ok and salida:
+            return f"Últimos commits:\n{salida}"
+        return "No pude obtener el historial de commits."
+
+    def _git_push(self, entidades: dict, contexto: dict) -> str:
+        ok, salida = _ejecutar_git(["push"])
+        if ok:
+            return "Cambios enviados al repositorio remoto."
+        return f"Error en git push: {salida[:100]}"
+
+    # ── Docker ────────────────────────────────────────────────────────────────
+
+    def _docker_up(self, entidades: dict, contexto: dict) -> str:
+        ok, _ = _ejecutar_en_terminal("docker compose up")
+        if ok:
+            return "Levantando contenedores Docker."
+        return "No pude levantar Docker Compose."
+
+    def _docker_down(self, entidades: dict, contexto: dict) -> str:
+        directorio = _obtener_directorio_proyecto()
+        try:
+            subprocess.Popen(
+                ["docker", "compose", "down"],
+                cwd=directorio,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            return "Deteniendo contenedores Docker."
+        except FileNotFoundError:
+            return "Docker no está instalado o no está en el PATH."
+        except Exception as e:
+            return f"Error deteniendo contenedores: {e}"
+
+    # ── Frameworks ────────────────────────────────────────────────────────────
+
+    def _laravel_serve(self, entidades: dict, contexto: dict) -> str:
+        ok, _ = _ejecutar_en_terminal("php artisan serve")
+        if ok:
+            return "Iniciando servidor Laravel en http://127.0.0.1:8000"
+        return "No pude iniciar el servidor Laravel."
+
+    def _flutter_run(self, entidades: dict, contexto: dict) -> str:
+        ok, _ = _ejecutar_en_terminal("flutter run")
+        if ok:
+            return "Ejecutando Flutter."
+        return "No pude ejecutar Flutter. Verifica que esté instalado y el proyecto sea válido."
+
+    def _python_run(self, entidades: dict, contexto: dict) -> str:
+        script = entidades.get("objeto", "").strip()
+        if not script:
+            return "¿Qué script Python deseas ejecutar?"
+        ok, _ = _ejecutar_en_terminal(f"python3 {script}")
+        if ok:
+            return f"Ejecutando {script} con Python."
+        return "No pude ejecutar el script."
+
+    def _cambiar_ventana(self, entidades: dict, contexto: dict) -> str:
+        app = entidades.get("app", "").strip()
+        if not app:
+            return "¿A qué ventana deseas cambiar?"
+        from modulos.gestor_aplicaciones import gestor_apps_sistema
+        ok, msg = gestor_apps_sistema.ensure_application_open(app)
+        return msg if ok else f"No encontré ninguna ventana abierta de '{app}'."
+
 
 def abrir_integrador() -> str:
     """

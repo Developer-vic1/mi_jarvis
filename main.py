@@ -112,7 +112,7 @@ def iniciar_jarvis_app(modo_demo: bool = False) -> int:
         """Trae Jarvis al frente si se intenta abrir otra instancia."""
         logger.info("Señal 'mostrar' recibida de otra instancia.")
         if _app_ref:
-            GLib.idle_add(_app_ref[0].activate)
+            GLib.idle_add(_app_ref[0].mostrar_ventana)
 
     es_primera_instancia = verificar_instancia_unica(callback_mostrar=_mostrar_ventana)
     if not es_primera_instancia:
@@ -122,11 +122,14 @@ def iniciar_jarvis_app(modo_demo: bool = False) -> int:
 
     # ── Inicializar núcleo ────────────────────────────────────────────────────
     from nucleo.cerebro import inicializar
+    from nucleo.listener_voz import listener_voz
     from nucleo.monitor_audio import monitor_audio
-    from nucleo.voz import hablar, frase_aleatoria
+    from nucleo.voz import hablar, frase_aleatoria, detener_tts
 
     inicializar()
     monitor_audio.iniciar()
+    from nucleo.cerebro import procesar_comando
+    listener_voz.iniciar(procesar_comando)
 
     # ── Crear y ejecutar la aplicación GTK ────────────────────────────────────
     app = AppJarvis(modo_demo=modo_demo)
@@ -147,7 +150,9 @@ def iniciar_jarvis_app(modo_demo: bool = False) -> int:
         logger.info("Jarvis detenido por KeyboardInterrupt.")
         return 0
     finally:
+        listener_voz.detener()
         monitor_audio.detener()
+        detener_tts()
         liberar_instancia()
         logger.info("Jarvis terminado.")
 

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=JARVIS
+Comment=Asistente personal de escritorio para Linux
+Exec=/home/victor/mi_jarvis/jarvis_launcher.sh
+Icon=/home/victor/mi_jarvis/jarvis_icon.svg
+Terminal=false
+Categories=Utility;AudioVideo;GTK;
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
+Keywords=assistant;jarvis;voice;ai;gtk;

@@ -134,6 +134,11 @@ class VentanaJarvis(Gtk.ApplicationWindow):
         self._nucleo.set_halign(Gtk.Align.CENTER)
         self._nucleo.set_margin_top(12)
         self._nucleo.set_margin_bottom(8)
+
+        gesto_click_nucleo = Gtk.GestureClick()
+        gesto_click_nucleo.connect("pressed", self._on_nucleo_clicked)
+        self._nucleo.add_controller(gesto_click_nucleo)
+
         self._cuerpo.append(self._nucleo)
 
         # ── Texto de estado grande ────────────────────────────────────────────
@@ -276,6 +281,15 @@ class VentanaJarvis(Gtk.ApplicationWindow):
         """Fin de arrastre — guarda posición."""
         self._arrastrando = False
         self._guardar_posicion()
+
+    def _on_nucleo_clicked(self, gesture, n_press, x, y) -> None:
+        """Activa la sesión de Jarvis al hacer clic en el núcleo visual."""
+        try:
+            from nucleo.cerebro import activar_sesion
+            activar_sesion()
+            logger.info("Jarvis activado manualmente por clic en núcleo.")
+        except Exception as e:
+            logger.debug("Error activando sesión por clic: %s", e)
 
     def _cargar_css(self) -> None:
         """Carga el CSS de la interfaz con las variables de la paleta activa."""
@@ -703,19 +717,20 @@ scrollbar slider:hover {{
         self._nucleo.set_estado(estado)
         self._panel_estado.actualizar_estado(estado)
 
-        # Actualizar dot del título
+        # Actualizar dot del título usando la paleta activa
+        paleta = gestor_temas.obtener_paleta()
         colores = {
-            "reposo":      "#6B8AAA",
-            "despertando": "#00CFFF",
-            "escuchando":  "#00CFFF",
-            "procesando":  "#0088FF",
-            "ejecutando":  "#00FFEE",
-            "hablando":    "#00CFFF",
-            "exito":       "#00FF9D",
-            "error":       "#FF3D71",
-            "esperando":   "#FFB800",
+            "reposo":      paleta.TEXT_DIM,
+            "despertando": paleta.PRIMARY,
+            "escuchando":  paleta.PRIMARY,
+            "procesando":  paleta.SECONDARY,
+            "ejecutando":  paleta.ACCENT,
+            "hablando":    paleta.PRIMARY,
+            "exito":       paleta.SUCCESS,
+            "error":       paleta.ERROR,
+            "esperando":   paleta.WARNING,
         }
-        color = colores.get(estado, "#6B8AAA")
+        color = colores.get(estado, paleta.PRIMARY)
         self._dot_titulo.set_markup(f'<span foreground="{color}">●</span>')
 
     def _ocultar_progreso_macro_delayed(self) -> bool:
@@ -735,18 +750,18 @@ scrollbar slider:hover {{
         self._mostrar_dialogo_config()
 
     def _mostrar_dialogo_config(self) -> None:
-        """Muestra el diálogo de configuración de Jarvis."""
+        """Muestra el diálogo de configuración de Jarvis con aislamiento de audio."""
         dialog = Gtk.Dialog(title="Configuración — JARVIS", transient_for=self, modal=True)
-        dialog.set_default_size(360, 400)
+        dialog.set_default_size(380, 520)
 
         box = dialog.get_content_area()
-        box.set_spacing(12)
+        box.set_spacing(10)
         box.set_margin_start(16)
         box.set_margin_end(16)
         box.set_margin_top(16)
         box.set_margin_bottom(16)
 
-        # Selección de tema
+        # ── 1. Selección de tema ─────────────────────────────────────────────
         lbl_tema = Gtk.Label(label="Paleta de colores:")
         lbl_tema.set_halign(Gtk.Align.START)
         box.append(lbl_tema)
@@ -760,8 +775,80 @@ scrollbar slider:hover {{
         combo_temas.connect("changed", self._on_tema_changed)
         box.append(combo_temas)
 
+        sep = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
+        box.append(sep)
+
+        # ── 2. Configuración e Aislamiento de Audio ──────────────────────────
+        from nucleo.audio_security import gestor_audio_security
+
+        lbl_audio_hdr = Gtk.Label(label="CONFIGURACIÓN DE AUDIO")
+        lbl_audio_hdr.set_halign(Gtk.Align.START)
+        lbl_audio_hdr.set_markup("<b>CONFIGURACIÓN DE AUDIO</b>")
+        box.append(lbl_audio_hdr)
+
+        lbl_input = Gtk.Label(label="Entrada de Micrófono:")
+        lbl_input.set_halign(Gtk.Align.START)
+        box.append(lbl_input)
+
+        combo_audio = Gtk.ComboBoxText()
+        dispositivos = gestor_audio_security.listar_dispositivos()
+        idx_actual, nombre_actual = gestor_audio_security.resolver_microfono_fisico()
+
+        active_idx = -1
+        combo_map = []
+        for d in dispositivos:
+            if d.tipo == "INPUT_PHYSICAL":
+                label_txt = f"🎤 {d.nombre} (Índice {d.index})"
+                combo_map.append((d.index, True))
+                combo_audio.append_text(label_txt)
+                if idx_actual == d.index:
+                    active_idx = len(combo_map) - 1
+            elif d.tipo == "SYSTEM_MONITOR_BLOCKED":
+                label_txt = f"🚫 [NO PERMITIDA] {d.nombre}"
+                combo_map.append((d.index, False))
+                combo_audio.append_text(label_txt)
+
+        if active_idx >= 0:
+            combo_audio.set_active(active_idx)
+
+        def _on_audio_changed(cb):
+            idx_sel = cb.get_active()
+            if 0 <= idx_sel < len(combo_map):
+                target_idx, es_permitido = combo_map[idx_sel]
+                if not es_permitido:
+                    logger.warning("Intento de seleccionar fuente monitor bloqueada.")
+                    if active_idx >= 0:
+                        cb.set_active(active_idx)
+                    return
+                gestor_audio_security.fijar_microfono_seleccionado(target_idx)
+
+        combo_audio.connect("changed", _on_audio_changed)
+        box.append(combo_audio)
+
+        # Estado de Seguridad de Audio
+        box_status = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        box_status.set_margin_top(4)
+
+        lbl_sys_audio = Gtk.Label()
+        lbl_sys_audio.set_halign(Gtk.Align.START)
+        lbl_sys_audio.set_markup("Audio del sistema: <span foreground='#FF3D71' font_weight='bold'>[ BLOQUEADO ]</span>")
+        box_status.append(lbl_sys_audio)
+
+        lbl_aec = Gtk.Label()
+        lbl_aec.set_halign(Gtk.Align.START)
+        lbl_aec.set_markup("Cancelación de eco (AEC): <span foreground='#00FF9D'>[ ✓ HABILITADO ]</span>")
+        box_status.append(lbl_aec)
+
+        lbl_ns = Gtk.Label()
+        lbl_ns.set_halign(Gtk.Align.START)
+        lbl_ns.set_markup("Supresión de ruido: <span foreground='#00FF9D'>[ ✓ HABILITADO ]</span>")
+        box_status.append(lbl_ns)
+
+        box.append(box_status)
+
         # Botón cerrar
         btn_cerrar = Gtk.Button(label="Cerrar")
+        btn_cerrar.set_margin_top(8)
         btn_cerrar.connect("clicked", lambda b: dialog.close())
         box.append(btn_cerrar)
 
@@ -839,6 +926,18 @@ class AppJarvis(Gtk.Application):
             self._ventana = VentanaJarvis(self, modo_demo=self._modo_demo)
 
         self._ventana.present()
+
+    def mostrar_ventana(self) -> bool:
+        """Muestra y activa la ventana existente ante una segunda invocación."""
+        if not self._ventana:
+            self.activate()
+        else:
+            try:
+                self._ventana.set_visible(True)
+                self._ventana.present()
+            except Exception as e:
+                logger.error("No se pudo activar la ventana existente: %s", e)
+        return False
 
     def obtener_ventana(self) -> VentanaJarvis:
         """Devuelve la referencia a la ventana principal."""

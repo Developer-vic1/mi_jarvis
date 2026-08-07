@@ -60,10 +60,10 @@ class PluginVentanas(plugins.BasePlugin):
     def _ventana_activa(self, entidades: dict, contexto: dict) -> str:
         ventana = gestor_apps_sistema.obtener_ventana_activa()
         if not ventana:
-            return "No pude determinar cuál es la ventana activa."
+            return "No pude determinar qué aplicación está activa."
 
         nombre_app = gestor_apps_sistema.obtener_nombre_amigable_app(ventana)
-        return f"Actualmente estás usando {nombre_app}."
+        return f"Estás trabajando en {nombre_app}."
 
     def _listar_aplicaciones(self, entidades: dict, contexto: dict) -> str:
         apps = gestor_apps_sistema.listar_nombres_aplicaciones_abiertas()
@@ -87,6 +87,8 @@ class PluginVentanas(plugins.BasePlugin):
             return msg
 
         ok, msg = gestor_apps_sistema.cerrar_aplicacion(nombre_app)
+        if not ok and ("no encontr" in msg.lower() or "ninguna" in msg.lower()):
+            return f"{nombre_app} no está ejecutándose."
         return msg
 
     def _enfocar_app(self, entidades: dict, contexto: dict) -> str:

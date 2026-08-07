@@ -166,3 +166,215 @@
 2026-08-07 00:49:51 | INFO     | jarvis.apps          | App lanzada: 'Google Chrome' → ['/usr/bin/google-chrome-stable']
 2026-08-07 00:49:51 | INFO     | jarvis.voz           | TTS: En un momento Google Chrome.
 2026-08-07 00:50:09 | INFO     | jarvis.voz           | TTS: Sistema interrumpido. Hasta luego.
+2026-08-07 02:42:57 | INFO     | jarvis.main          | ==================================================
+2026-08-07 02:42:57 | INFO     | jarvis.main          | Jarvis GTK iniciando...
+2026-08-07 02:42:57 | INFO     | jarvis.single_instance | SingleInstance: lock adquirido. Socket: /home/victor/.jarvis_single_instance.sock
+2026-08-07 02:42:57 | INFO     | jarvis.memoria       | Base de datos inicializada: /home/victor/mi_jarvis/datos/jarvis.db
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'aplicaciones' (1 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'ventanas' (7 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'linux' (14 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'web' (2 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'archivos' (8 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'calculadora' (1 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'datetime' (5 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'definiciones' (1 intenciones).
+2026-08-07 02:42:57 | WARNING  | jarvis.plugins       | Intención 'CAMBIAR_VENTANA' ya registrada por 'ventanas'. Será reemplazada por 'desarrollo'.
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'desarrollo' (11 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugin registrado: 'ayuda' (1 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.cerebro       | Inicializando cerebro de Jarvis...
+2026-08-07 02:42:57 | INFO     | jarvis.plugins       | Plugins cargados: 0 nuevos (10 total).
+2026-08-07 02:42:57 | INFO     | jarvis.macros.gestor | Macro registrada correctamente: ABRIR_INTEGRADOR
+2026-08-07 02:42:57 | INFO     | jarvis.macros.gestor | Macro registrada correctamente: MACRO_FLUTTER
+2026-08-07 02:42:57 | INFO     | jarvis.macros.gestor | Macro registrada correctamente: MACRO_PYTHON
+2026-08-07 02:42:57 | INFO     | jarvis.macros.gestor | Macro registrada correctamente: MACRO_LARAVEL
+2026-08-07 02:42:57 | INFO     | jarvis.macros.gestor | Todas las macros han sido cargadas. Total registradas: 4
+2026-08-07 02:42:57 | INFO     | jarvis.cerebro       | Plugins cargados: 10 (51 intenciones).
+2026-08-07 02:42:57 | INFO     | jarvis.monitor_audio | MonitorAudio iniciado.
+2026-08-07 02:42:57 | INFO     | jarvis.listener_voz  | Listener de voz iniciado.
+2026-08-07 02:42:57 | INFO     | jarvis.escucha       | Recalibrando ruido ambiental.
+2026-08-07 02:42:57 | INFO     | jarvis.interfaz.nucleo_visual | NucleoVisual inicializado.
+2026-08-07 02:42:57 | INFO     | jarvis.eventos.bus   | EventBus configurado con GLib.idle_add para thread-safety GTK4.
+2026-08-07 02:42:57 | INFO     | jarvis.interfaz.ventana | EventBus conectado a la UI.
+2026-08-07 02:42:57 | INFO     | jarvis.interfaz.ventana | VentanaJarvis inicializada.
+2026-08-07 02:42:58 | INFO     | jarvis.escucha       | Calibración completada.
+2026-08-07 02:42:58 | INFO     | jarvis.voz           | TTS: Sistemas operativos. A tu disposición.
+2026-08-07 02:43:04 | INFO     | jarvis.escucha       | Texto reconocido: 'sistemas operativos a tu disposición'
+2026-08-07 02:43:04 | INFO     | jarvis.cerebro       | Procesando: 'sistemas operativos a tu disposición' (estado=REPOSO)
+2026-08-07 02:56:14 | INFO     | jarvis.main          | ==================================================
+2026-08-07 02:56:14 | INFO     | jarvis.main          | Jarvis GTK iniciando...
+2026-08-07 02:56:15 | INFO     | jarvis.single_instance | SingleInstance: lock adquirido. Socket: /home/victor/.jarvis_single_instance.sock
+2026-08-07 02:56:15 | INFO     | jarvis.memoria       | Base de datos inicializada: /home/victor/mi_jarvis/datos/jarvis.db
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'aplicaciones' (1 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'ventanas' (7 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'linux' (14 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'web' (2 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'archivos' (8 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'calculadora' (1 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'datetime' (5 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'definiciones' (1 intenciones).
+2026-08-07 02:56:15 | WARNING  | jarvis.plugins       | Intención 'CAMBIAR_VENTANA' ya registrada por 'ventanas'. Será reemplazada por 'desarrollo'.
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'desarrollo' (11 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugin registrado: 'ayuda' (1 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.cerebro       | Inicializando cerebro de Jarvis...
+2026-08-07 02:56:15 | INFO     | jarvis.plugins       | Plugins cargados: 0 nuevos (10 total).
+2026-08-07 02:56:15 | INFO     | jarvis.macros.gestor | Macro registrada correctamente: ABRIR_INTEGRADOR
+2026-08-07 02:56:15 | INFO     | jarvis.macros.gestor | Macro registrada correctamente: MACRO_FLUTTER
+2026-08-07 02:56:15 | INFO     | jarvis.macros.gestor | Macro registrada correctamente: MACRO_PYTHON
+2026-08-07 02:56:15 | INFO     | jarvis.macros.gestor | Macro registrada correctamente: MACRO_LARAVEL
+2026-08-07 02:56:15 | INFO     | jarvis.macros.gestor | Todas las macros han sido cargadas. Total registradas: 4
+2026-08-07 02:56:15 | INFO     | jarvis.cerebro       | Plugins cargados: 10 (51 intenciones).
+2026-08-07 02:56:15 | INFO     | jarvis.monitor_audio | MonitorAudio iniciado.
+2026-08-07 02:56:15 | INFO     | jarvis.listener_voz  | Listener de voz iniciado.
+2026-08-07 02:56:15 | INFO     | jarvis.escucha       | Recalibrando ruido ambiental.
+2026-08-07 02:56:15 | INFO     | jarvis.interfaz.nucleo_visual | NucleoVisual inicializado.
+2026-08-07 02:56:15 | INFO     | jarvis.eventos.bus   | EventBus configurado con GLib.idle_add para thread-safety GTK4.
+2026-08-07 02:56:15 | INFO     | jarvis.interfaz.ventana | EventBus conectado a la UI.
+2026-08-07 02:56:15 | INFO     | jarvis.interfaz.ventana | VentanaJarvis inicializada.
+2026-08-07 02:56:15 | INFO     | jarvis.escucha       | Calibración completada.
+2026-08-07 02:56:16 | INFO     | jarvis.voz           | TTS: Jarvis activo. Listo para trabajar.
+2026-08-07 02:56:21 | INFO     | jarvis.escucha       | Texto reconocido: 'carbis activo listo para trabajar'
+2026-08-07 02:56:21 | INFO     | jarvis.cerebro       | Procesando: 'carbis activo listo para trabajar' (estado=REPOSO)
+2026-08-07 02:56:23 | INFO     | jarvis.escucha       | Texto reconocido: 'jarvis'
+2026-08-07 02:56:23 | INFO     | jarvis.cerebro       | Procesando: 'jarvis' (estado=REPOSO)
+2026-08-07 02:56:23 | INFO     | jarvis.cerebro       | Sesión activada.
+2026-08-07 02:56:23 | INFO     | jarvis.voz           | TTS: A tus órdenes.
+2026-08-07 02:56:26 | INFO     | jarvis.escucha       | Texto reconocido: 'a tus órdenes'
+2026-08-07 02:56:26 | INFO     | jarvis.cerebro       | Procesando: 'a tus órdenes' (estado=ESCUCHANDO)
+2026-08-07 02:56:26 | INFO     | jarvis.nlp           | NLP: 'a tus órdenes' → intent=DEFINIR (73%) ent={'palabra': 'a tus ordenes'}
+2026-08-07 02:56:26 | INFO     | jarvis.definiciones  | Buscando definición de: 'a tus ordenes'
+2026-08-07 02:56:34 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'a tus ordenes'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 02:56:43 | INFO     | jarvis.escucha       | Texto reconocido: 'no encontré una definición para tus órdenes puede que sea un término muy especializado o un nombre propio'
+2026-08-07 02:56:43 | INFO     | jarvis.cerebro       | Procesando: 'no encontré una definición para tus órdenes puede que sea un término muy especializado o un nombre propio' (estado=ESCUCHANDO)
+2026-08-07 02:56:43 | INFO     | jarvis.nlp           | NLP: 'no encontré una definición para tus órdenes puede que sea un término muy especializado o un nombre propio' → intent=DEFINIR (83%) ent={'palabra': 'no encontre una definicion para tus ordenes puede que sea un termino muy especializado o un nombre propio'}
+2026-08-07 02:56:43 | INFO     | jarvis.definiciones  | Buscando definición de: 'no encontre una definicion para tus ordenes puede que sea un termino muy especializado o un nombre propio'
+2026-08-07 02:56:44 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'no encontre una definicion para tus ordenes puede que sea un termino muy especializado o un nombre propio'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 02:56:58 | INFO     | jarvis.escucha       | Texto reconocido: 'no encontré una definición para no encontré una definición para tus órdenes puede que sea un término muy especializado o un nombre propio puede que sea un término muy especializado o un nombre propio'
+2026-08-07 02:56:58 | INFO     | jarvis.cerebro       | Procesando: 'no encontré una definición para no encontré una definición para tus órdenes puede que sea un término muy especializado o un nombre propio puede que sea un término muy especializado o un nombre propio' (estado=ESCUCHANDO)
+2026-08-07 02:56:58 | INFO     | jarvis.nlp           | NLP: 'no encontré una definición para no encontré una definición para tus órdenes puede que sea un término muy especializado o un nombre propio puede que sea un término muy especializado o un nombre propio' → intent=DEFINIR (83%) ent={'palabra': 'no encontre una definicion para no encontre una definicion para tus ordenes puede que sea un termino muy especializado o un nombre propio puede que sea un termino muy especializado o un nombre propio'}
+2026-08-07 02:56:58 | INFO     | jarvis.definiciones  | Buscando definición de: 'no encontre una definicion para no encontre una definicion para tus ordenes puede que sea un termino muy especializado o un nombre propio puede que sea un termino muy especializado o un nombre propio'
+2026-08-07 02:56:59 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'no encontre una definicion para no encontre una definicion para tus ordenes puede que sea un termino muy especializado o un nombre propio puede que sea un termino muy especializado o un nombre propio'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 02:57:17 | INFO     | jarvis.escucha       | Texto reconocido: 'no encontré una definición para no encontré una definición para no encontré una definición para que ustedes puede que sea un término muy especializado con un nombre propio puede que sea un término muy especializado con nombre propio'
+2026-08-07 02:57:17 | INFO     | jarvis.cerebro       | Procesando: 'no encontré una definición para no encontré una definición para no encontré una definición para que ustedes puede que sea un término muy especializado con un nombre propio puede que sea un término muy especializado con nombre propio' (estado=ESCUCHANDO)
+2026-08-07 02:57:17 | INFO     | jarvis.nlp           | NLP: 'no encontré una definición para no encontré una definición para no encontré una definición para que ustedes puede que sea un término muy especializado con un nombre propio puede que sea un término muy especializado con nombre propio' → intent=DEFINIR (83%) ent={'palabra': 'no encontre una definicion para no encontre una definicion para no encontre una definicion para que ustedes puede que sea un termino muy especializado con un nombre propio puede que sea un termino muy especializado con nombre propio'}
+2026-08-07 02:57:17 | INFO     | jarvis.definiciones  | Buscando definición de: 'no encontre una definicion para no encontre una definicion para no encontre una definicion para que ustedes puede que sea un termino muy especializado con un nombre propio puede que sea un termino muy especializado con nombre propio'
+2026-08-07 02:57:18 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'no encontre una definicion para no encontre una definicion para no encontre una definicion para que ustedes puede que sea un termino muy especializado con un nombre propio puede que sea un termino muy especializado con nombre propio'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 02:57:22 | INFO     | jarvis.temas         | Tema cambiado a: jarvis_cyber
+2026-08-07 02:57:23 | INFO     | jarvis.interfaz.ventana | Tema actualizado en UI: jarvis_cyber
+2026-08-07 02:57:26 | INFO     | jarvis.temas         | Tema cambiado a: jarvis_amber
+2026-08-07 02:57:26 | INFO     | jarvis.interfaz.ventana | Tema actualizado en UI: jarvis_amber
+2026-08-07 02:57:29 | INFO     | jarvis.temas         | Tema cambiado a: jarvis_neutral
+2026-08-07 02:57:29 | INFO     | jarvis.interfaz.ventana | Tema actualizado en UI: jarvis_neutral
+2026-08-07 02:57:34 | INFO     | jarvis.escucha       | Texto reconocido: 'no encontré una definición para no encontré una definición para no encontré una definición para no encontré una definición para que ustedes puede que sea un término muy especializado con un nombre propio puede que sea un'
+2026-08-07 02:57:34 | INFO     | jarvis.cerebro       | Procesando: 'no encontré una definición para no encontré una definición para no encontré una definición para no encontré una definición para que ustedes puede que sea un término muy especializado con un nombre propio puede que sea un' (estado=ESCUCHANDO)
+2026-08-07 02:57:34 | INFO     | jarvis.nlp           | NLP: 'no encontré una definición para no encontré una definición para no encontré una definición para no encontré una definición para que ustedes puede que sea un término muy especializado con un nombre propio puede que sea un' → intent=DEFINIR (83%) ent={'palabra': 'no encontre una definicion para no encontre una definicion para no encontre una definicion para no encontre una definicion para que ustedes puede que sea un termino muy especializado con un nombre propio puede que sea un'}
+2026-08-07 02:57:34 | INFO     | jarvis.definiciones  | Buscando definición de: 'no encontre una definicion para no encontre una definicion para no encontre una definicion para no encontre una definicion para que ustedes puede que sea un termino muy especializado con un nombre propio puede que sea un'
+2026-08-07 02:57:36 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'no encontre una definicion para no encontre una definicion para no encontre una definicion para no encontre una definicion para que ustedes puede que sea un termino muy especializado con un nombre propio puede que sea un'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 02:57:37 | INFO     | jarvis.escucha       | Texto reconocido: 'o un nombre propio'
+2026-08-07 02:57:37 | INFO     | jarvis.cerebro       | Procesando: 'o un nombre propio' (estado=ESCUCHANDO)
+2026-08-07 02:57:37 | INFO     | jarvis.nlp           | NLP: 'o un nombre propio' → intent=RENOMBRAR (69%) ent={'objeto': 'o un nombre propio'}
+2026-08-07 02:57:45 | INFO     | jarvis.escucha       | Texto reconocido: 'no encontré una definición para no encontré una definición para no encontré una definición para no'
+2026-08-07 02:57:45 | INFO     | jarvis.cerebro       | Procesando: 'no encontré una definición para no encontré una definición para no encontré una definición para no' (estado=ESCUCHANDO)
+2026-08-07 02:57:45 | INFO     | jarvis.nlp           | NLP: 'no encontré una definición para no encontré una definición para no encontré una definición para no' → intent=DEFINIR (83%) ent={'palabra': 'no encontre una definicion para no encontre una definicion para no encontre una definicion para no'}
+2026-08-07 02:57:45 | INFO     | jarvis.definiciones  | Buscando definición de: 'no encontre una definicion para no encontre una definicion para no encontre una definicion para no'
+2026-08-07 02:57:50 | INFO     | jarvis.escucha       | Texto reconocido: 'jarvis'
+2026-08-07 02:57:50 | INFO     | jarvis.cerebro       | Procesando: 'jarvis' (estado=ESCUCHANDO)
+2026-08-07 02:57:50 | INFO     | jarvis.nlp           | NLP: 'jarvis' → intent=ABRIR_INTEGRADOR (67%) ent={}
+2026-08-07 02:57:50 | INFO     | jarvis.macros.gestor | Iniciando ejecución de macro: ABRIR_INTEGRADOR
+2026-08-07 02:57:50 | INFO     | jarvis.macros.abrir_integrador | ====================================================
+2026-08-07 02:57:50 | INFO     | jarvis.macros.abrir_integrador | === INICIANDO SECUENCIA MACRO: ABRIR_INTEGRADOR ===
+2026-08-07 02:57:50 | INFO     | jarvis.macros.abrir_integrador | ====================================================
+2026-08-07 02:57:50 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:57:50] [PASO 1: Validar Carpeta] Comando: 'os.path.exists('/home/victor/UNIFRANZ/savp-tis3')' | Resultado: ÉXITO | Tiempo: 0.00s
+2026-08-07 02:57:51 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:57:51] [PASO 2: Buscar/Abrir Editor] Comando: '/usr/bin/antigravity /home/victor/UNIFRANZ/savp-tis3' | Resultado: ÉXITO | Tiempo: 1.54s
+2026-08-07 02:57:52 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:57:52] [PASO 3: Verificar/Levantar Docker] Comando: 'docker ps (contenedores ya activos)' | Resultado: ÉXITO | Tiempo: 0.63s
+2026-08-07 02:57:52 | INFO     | jarvis.macros.abrir_integrador | Los contenedores Docker Sail ya están activos.
+2026-08-07 02:57:52 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:57:52] [PASO 4: Abrir/Enfocar Chrome] Comando: 'Abriendo navegador en http://localhost.' | Resultado: ÉXITO | Tiempo: 0.16s
+2026-08-07 02:57:52 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:57:52] [PASO 5: Tilix NPM Run Dev] Comando: '/usr/bin/tilix -w /home/victor/UNIFRANZ/savp-tis3 -e bash -c 'npm run dev; exec bash'' | Resultado: ÉXITO | Tiempo: 0.09s
+2026-08-07 02:57:54 | INFO     | jarvis.voz           | TTS: Para renombrar necesito saber el nombre actual y el nuevo nombre. Por ejemplo: 'renombra pruebas a desarrollo'.
+2026-08-07 02:57:57 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:57:57] [PASO 6: Verificación Final de Servicios] Comando: 'HTTP + pgrep + docker ps' | Resultado: ÉXITO | Tiempo: 3.92s
+2026-08-07 02:57:57 | INFO     | jarvis.macros.gestor | Macro 'ABRIR_INTEGRADOR' finalizada en 7.34 segundos. Éxito: True
+2026-08-07 02:58:03 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'no encontre una definicion para no encontre una definicion para no encontre una definicion para no'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 02:58:08 | INFO     | jarvis.escucha       | Texto reconocido: 'no encontré una definición para no encontrar'
+2026-08-07 02:58:08 | INFO     | jarvis.cerebro       | Procesando: 'no encontré una definición para no encontrar' (estado=ESCUCHANDO)
+2026-08-07 02:58:08 | INFO     | jarvis.nlp           | NLP: 'no encontré una definición para no encontrar' → intent=DEFINIR (83%) ent={'palabra': 'no encontre una definicion para no encontrar'}
+2026-08-07 02:58:08 | INFO     | jarvis.definiciones  | Buscando definición de: 'no encontre una definicion para no encontrar'
+2026-08-07 02:58:13 | INFO     | jarvis.escucha       | Texto reconocido: 'puede que'
+2026-08-07 02:58:13 | INFO     | jarvis.cerebro       | Procesando: 'puede que' (estado=ESCUCHANDO)
+2026-08-07 02:58:13 | INFO     | jarvis.nlp           | NLP: 'puede que' → intent=LINUX_CPU (80%) ent={}
+2026-08-07 02:58:14 | INFO     | jarvis.voz           | TTS: Iniciando el entorno de desarrollo de tu proyecto integrador.
+2026-08-07 02:58:19 | INFO     | jarvis.voz           | TTS: El entorno de desarrollo para tu integrador ha sido cargado y verificado con éxito.
+2026-08-07 02:58:24 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'no encontre una definicion para no encontrar'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 02:58:26 | INFO     | jarvis.escucha       | Texto reconocido: 'jarvis'
+2026-08-07 02:58:26 | INFO     | jarvis.cerebro       | Procesando: 'jarvis' (estado=ESCUCHANDO)
+2026-08-07 02:58:26 | INFO     | jarvis.nlp           | NLP: 'jarvis' → intent=ABRIR_INTEGRADOR (67%) ent={}
+2026-08-07 02:58:26 | INFO     | jarvis.macros.gestor | Iniciando ejecución de macro: ABRIR_INTEGRADOR
+2026-08-07 02:58:26 | INFO     | jarvis.macros.abrir_integrador | ====================================================
+2026-08-07 02:58:26 | INFO     | jarvis.macros.abrir_integrador | === INICIANDO SECUENCIA MACRO: ABRIR_INTEGRADOR ===
+2026-08-07 02:58:26 | INFO     | jarvis.macros.abrir_integrador | ====================================================
+2026-08-07 02:58:26 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:58:26] [PASO 1: Validar Carpeta] Comando: 'os.path.exists('/home/victor/UNIFRANZ/savp-tis3')' | Resultado: ÉXITO | Tiempo: 0.00s
+2026-08-07 02:58:27 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:58:27] [PASO 2: Buscar/Abrir Editor] Comando: '/usr/bin/antigravity /home/victor/UNIFRANZ/savp-tis3' | Resultado: ÉXITO | Tiempo: 1.54s
+2026-08-07 02:58:28 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:58:28] [PASO 3: Verificar/Levantar Docker] Comando: 'docker ps (contenedores ya activos)' | Resultado: ÉXITO | Tiempo: 0.26s
+2026-08-07 02:58:28 | INFO     | jarvis.macros.abrir_integrador | Los contenedores Docker Sail ya están activos.
+2026-08-07 02:58:28 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:58:28] [PASO 4: Abrir/Enfocar Chrome] Comando: 'Abriendo navegador en http://localhost.' | Resultado: ÉXITO | Tiempo: 0.13s
+2026-08-07 02:58:28 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:58:28] [PASO 5: Tilix NPM Run Dev] Comando: 'Vite ya activo' | Resultado: ÉXITO | Tiempo: 0.03s
+2026-08-07 02:58:32 | INFO     | jarvis.macros.abrir_integrador | [2026-08-07 02:58:32] [PASO 6: Verificación Final de Servicios] Comando: 'HTTP + pgrep + docker ps' | Resultado: ÉXITO | Tiempo: 3.29s
+2026-08-07 02:58:32 | INFO     | jarvis.macros.gestor | Macro 'ABRIR_INTEGRADOR' finalizada en 6.26 segundos. Éxito: True
+2026-08-07 02:58:32 | INFO     | jarvis.voz           | TTS: CPU al 7% de uso. 16 núcleos a 3035 MHz.
+2026-08-07 02:58:39 | INFO     | jarvis.voz           | TTS: Iniciando el entorno de desarrollo de tu proyecto integrador.
+2026-08-07 02:58:41 | INFO     | jarvis.escucha       | Texto reconocido: 'jarvis ábreme base'
+2026-08-07 02:58:41 | INFO     | jarvis.cerebro       | Procesando: 'jarvis ábreme base' (estado=ESCUCHANDO)
+2026-08-07 02:58:41 | INFO     | jarvis.nlp           | NLP: 'jarvis ábreme base' → intent=ABRIR_APP (100%) ent={'app': 'jarvis abre base'}
+2026-08-07 02:58:41 | INFO     | jarvis.apps          | Índice cargado: 44 apps (2.5h de antigüedad).
+2026-08-07 02:58:41 | INFO     | jarvis.apps          | App no encontrada: 'jarvis abre base'
+2026-08-07 02:58:41 | ERROR    | jarvis.gestor_aplicaciones | No se encontró el ejecutable para la aplicación 'jarvis abre base'.
+2026-08-07 02:58:43 | INFO     | jarvis.voz           | TTS: El entorno de desarrollo para tu integrador ha sido cargado y verificado con éxito.
+2026-08-07 02:58:48 | INFO     | jarvis.voz           | TTS: No encontré ninguna aplicación llamada 'jarvis abre base'. ¿Puedes intentarlo con otro nombre?
+2026-08-07 02:58:56 | INFO     | jarvis.escucha       | Texto reconocido: 'abre'
+2026-08-07 02:58:56 | INFO     | jarvis.cerebro       | Procesando: 'abre' (estado=ESCUCHANDO)
+2026-08-07 02:58:56 | INFO     | jarvis.nlp           | NLP: 'abre' → intent=ABRIR_APP (100%) ent={'app': ''}
+2026-08-07 02:58:56 | INFO     | jarvis.voz           | TTS: ¿Qué aplicación deseas abrir?
+2026-08-07 02:59:02 | INFO     | jarvis.escucha       | Texto reconocido: 'qué aplicación deseas saudy base de datos'
+2026-08-07 02:59:02 | INFO     | jarvis.cerebro       | Procesando: 'qué aplicación deseas saudy base de datos' (estado=ESCUCHANDO)
+2026-08-07 02:59:02 | INFO     | jarvis.nlp           | NLP: 'qué aplicación deseas saudy base de datos' → intent=CERRAR_APP (77%) ent={'app': 'que aplicacion deseas saudy base de datos'}
+2026-08-07 02:59:02 | INFO     | jarvis.voz           | TTS: que aplicacion deseas saudy base de datos no está ejecutándose.
+2026-08-07 02:59:06 | INFO     | jarvis.escucha       | Texto reconocido: 'qué aplicación desea sal y base'
+2026-08-07 02:59:06 | INFO     | jarvis.cerebro       | Procesando: 'qué aplicación desea sal y base' (estado=ESCUCHANDO)
+2026-08-07 02:59:06 | INFO     | jarvis.nlp           | NLP: 'qué aplicación desea sal y base' → intent=CERRAR_APP (77%) ent={'app': 'que aplicacion desea sal y base'}
+2026-08-07 02:59:06 | INFO     | jarvis.voz           | TTS: que aplicacion desea sal y base no está ejecutándose.
+2026-08-07 02:59:12 | INFO     | jarvis.escucha       | Texto reconocido: 'qué aplicación no está ejecutando'
+2026-08-07 02:59:12 | INFO     | jarvis.cerebro       | Procesando: 'qué aplicación no está ejecutando' (estado=ESCUCHANDO)
+2026-08-07 02:59:12 | INFO     | jarvis.nlp           | NLP: 'qué aplicación no está ejecutando' → intent=ABRIR_APP (100%) ent={'app': 'que aplicacion no esta ejecutando'}
+2026-08-07 02:59:12 | INFO     | jarvis.apps          | App no encontrada: 'que aplicacion no esta ejecutando'
+2026-08-07 02:59:12 | ERROR    | jarvis.gestor_aplicaciones | No se encontró el ejecutable para la aplicación 'que aplicacion no esta ejecutando'.
+2026-08-07 02:59:12 | INFO     | jarvis.voz           | TTS: No encontré ninguna aplicación llamada 'que aplicacion no esta ejecutando'. ¿Puedes intentarlo con otro nombre?
+2026-08-07 02:59:14 | INFO     | jarvis.escucha       | Texto reconocido: 'jarvis abre'
+2026-08-07 02:59:14 | INFO     | jarvis.cerebro       | Procesando: 'jarvis abre' (estado=ESCUCHANDO)
+2026-08-07 02:59:14 | INFO     | jarvis.nlp           | NLP: 'jarvis abre' → intent=ABRIR_APP (100%) ent={'app': 'jarvis abre'}
+2026-08-07 02:59:14 | INFO     | jarvis.apps          | App no encontrada: 'jarvis abre'
+2026-08-07 02:59:14 | ERROR    | jarvis.gestor_aplicaciones | No se encontró el ejecutable para la aplicación 'jarvis abre'.
+2026-08-07 02:59:18 | INFO     | jarvis.voz           | TTS: No encontré ninguna aplicación llamada 'jarvis abre'. ¿Puedes intentarlo con otro nombre?
+2026-08-07 02:59:27 | INFO     | jarvis.escucha       | Texto reconocido: 'jarvis abre'
+2026-08-07 02:59:27 | INFO     | jarvis.cerebro       | Procesando: 'jarvis abre' (estado=ESCUCHANDO)
+2026-08-07 02:59:27 | INFO     | jarvis.nlp           | NLP: 'jarvis abre' → intent=ABRIR_APP (100%) ent={'app': 'jarvis abre'}
+2026-08-07 02:59:27 | INFO     | jarvis.apps          | App no encontrada: 'jarvis abre'
+2026-08-07 02:59:27 | ERROR    | jarvis.gestor_aplicaciones | No se encontró el ejecutable para la aplicación 'jarvis abre'.
+2026-08-07 02:59:27 | INFO     | jarvis.voz           | TTS: No encontré ninguna aplicación llamada 'jarvis abre'. ¿Puedes intentarlo con otro nombre?
+2026-08-07 02:59:37 | INFO     | jarvis.escucha       | Texto reconocido: 'abre base de datos'
+2026-08-07 02:59:37 | INFO     | jarvis.cerebro       | Procesando: 'abre base de datos' (estado=ESCUCHANDO)
+2026-08-07 02:59:37 | INFO     | jarvis.nlp           | NLP: 'abre base de datos' → intent=ABRIR_APP (100%) ent={'app': 'base de datos'}
+2026-08-07 02:59:37 | INFO     | jarvis.apps          | App encontrada (exacta): 'base de datos' → 'pgAdmin 4'
+2026-08-07 02:59:37 | INFO     | jarvis.gestor_aplicaciones | Aplicación iniciada: ['/usr/pgadmin4/bin/pgadmin4']
+2026-08-07 02:59:38 | INFO     | jarvis.voz           | TTS: Cargando pgAdmin 4.
+2026-08-07 03:00:04 | INFO     | jarvis.escucha       | Texto reconocido: 'descansa'
+2026-08-07 03:00:04 | INFO     | jarvis.cerebro       | Procesando: 'descansa' (estado=ESCUCHANDO)
+2026-08-07 03:00:04 | INFO     | jarvis.cerebro       | Sesión desactivada. Modo reposo.
+2026-08-07 03:00:04 | INFO     | jarvis.voz           | TTS: Aquí estaré cuando me necesites.
+2026-08-07 03:00:07 | INFO     | jarvis.escucha       | Texto reconocido: 'aquí estaré'
+2026-08-07 03:00:07 | INFO     | jarvis.cerebro       | Procesando: 'aquí estaré' (estado=REPOSO)
+2026-08-07 03:00:27 | INFO     | jarvis.temas         | Tema cambiado a: jarvis_high_contrast
+2026-08-07 03:00:28 | INFO     | jarvis.interfaz.ventana | Tema actualizado en UI: jarvis_high_contrast
+2026-08-07 03:00:30 | INFO     | jarvis.temas         | Tema cambiado a: jarvis_neutral
+2026-08-07 03:00:30 | INFO     | jarvis.interfaz.ventana | Tema actualizado en UI: jarvis_neutral
+2026-08-07 03:00:36 | INFO     | jarvis.listener_voz  | Listener de voz detenido.
+2026-08-07 03:00:36 | INFO     | jarvis.monitor_audio | MonitorAudio detenido.
+2026-08-07 03:00:36 | INFO     | jarvis.single_instance | SingleInstance: lock liberado.
+2026-08-07 03:00:36 | INFO     | jarvis.main          | Jarvis terminado.

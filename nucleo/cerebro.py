@@ -114,11 +114,13 @@ class Cerebro:
         """Activa la sesión conversacional."""
         self._estado = EstadoJarvis.DESPERTANDO
         bus.emitir(Eventos.DESPERTANDO)
+        bus.emitir(Eventos.STATE_CHANGED, {"estado": "despertando"})
         time.sleep(0.1)  # Pequeña pausa para que la UI reaccione
         self._estado = EstadoJarvis.ESCUCHANDO
         self._ultima_actividad = time.time()
         self._contexto = {}
         bus.emitir(Eventos.ESCUCHANDO)
+        bus.emitir(Eventos.STATE_CHANGED, {"estado": "escuchando"})
         logger.info("Sesión activada.")
 
     def _actualizar_actividad(self) -> None:
@@ -131,6 +133,7 @@ class Cerebro:
         self._contexto = {}
         self._confirmacion_pendiente = None
         bus.emitir(Eventos.REPOSO)
+        bus.emitir(Eventos.STATE_CHANGED, {"estado": "reposo"})
         logger.info("Sesión desactivada. Modo reposo.")
 
     def _timeout_expirado(self) -> bool:
@@ -310,6 +313,7 @@ class Cerebro:
         self._estado = EstadoJarvis.PROCESANDO
         bus.emitir(Eventos.TEXTO_USUARIO, {"texto": texto_crudo})
         bus.emitir(Eventos.PROCESANDO, {"texto": texto_crudo})
+        bus.emitir(Eventos.STATE_CHANGED, {"estado": "procesando"})
 
         try:
             # ── 1. Resolver alias ─────────────────────────────────────────────
@@ -354,6 +358,7 @@ class Cerebro:
                     "accion": resultado_nlp.intencion,
                     "descripcion": f"Ejecutando macro {resultado_nlp.intencion}",
                 })
+                bus.emitir(Eventos.STATE_CHANGED, {"estado": "ejecutando"})
                 try:
                     exito, respuesta = ejecutar_macro(resultado_nlp.intencion)
                 except Exception as e:
@@ -379,6 +384,8 @@ class Cerebro:
                 guardar_interaccion(texto_crudo, resultado_nlp.intencion, respuesta)
                 self._estado = EstadoJarvis.ESCUCHANDO
                 bus.emitir(Eventos.ESCUCHANDO)
+                bus.emitir(Eventos.COMMAND_COMPLETED, {"texto": texto_crudo, "respuesta": respuesta})
+                bus.emitir(Eventos.STATE_CHANGED, {"estado": "escuchando"})
                 return respuesta
 
             # ── 4. Buscar plugin ──────────────────────────────────────────────
@@ -399,6 +406,7 @@ class Cerebro:
                 "accion": resultado_nlp.intencion,
                 "descripcion": f"Plugin: {type(plugin).__name__}",
             })
+            bus.emitir(Eventos.STATE_CHANGED, {"estado": "ejecutando"})
             respuesta_raw = plugin.manejar(
                 resultado_nlp.intencion,
                 resultado_nlp.entidades,
@@ -419,9 +427,11 @@ class Cerebro:
                     respuesta,
                 )
                 bus.emitir(Eventos.EXITO, {"resultado": respuesta})
+                bus.emitir(Eventos.COMMAND_COMPLETED, {"texto": texto_crudo, "respuesta": respuesta})
 
             self._estado = EstadoJarvis.ESCUCHANDO
             bus.emitir(Eventos.ESCUCHANDO)
+            bus.emitir(Eventos.STATE_CHANGED, {"estado": "escuchando"})
             return respuesta
 
         except Exception as e:
@@ -431,6 +441,7 @@ class Cerebro:
             self._estado = EstadoJarvis.ESCUCHANDO
             bus.emitir(Eventos.ERROR, {"mensaje": str(e)})
             bus.emitir(Eventos.ESCUCHANDO)
+            bus.emitir(Eventos.STATE_CHANGED, {"estado": "escuchando"})
             return respuesta
 
     def _procesar_respuesta_plugin(

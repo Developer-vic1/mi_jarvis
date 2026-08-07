@@ -1,0 +1,112 @@
+usage: main.py [-h] [--console] [--demo]
+
+Inicia Jarvis como asistente de escritorio GTK o en modo consola.
+
+options:
+  -h, --help  show this help message and exit
+  --console   Ejecutar Jarvis en modo consola clásico (sin GTK).
+  --demo      Iniciar la interfaz GTK en modo demostración visual.
+
+Ejemplos:
+  ./venv/bin/python main.py              # Interfaz GTK (modo normal)
+  ./venv/bin/python main.py --console    # Modo consola (fallback sin GTK)
+  ./venv/bin/python main.py --demo       # Interfaz GTK en modo demostración
+        
+usage: main.py [-h] [--console] [--demo]
+
+Inicia Jarvis como asistente de escritorio GTK o en modo consola.
+
+options:
+  -h, --help  show this help message and exit
+  --console   Ejecutar Jarvis en modo consola clásico (sin GTK).
+  --demo      Iniciar la interfaz GTK en modo demostración visual.
+
+Ejemplos:
+  ./venv/bin/python main.py              # Interfaz GTK (modo normal)
+  ./venv/bin/python main.py --console    # Modo consola (fallback sin GTK)
+  ./venv/bin/python main.py --demo       # Interfaz GTK en modo demostración
+        
+usage: main.py [-h] [--console] [--demo]
+
+Inicia Jarvis como asistente de escritorio GTK o en modo consola.
+
+options:
+  -h, --help  show this help message and exit
+  --console   Ejecutar Jarvis en modo consola clásico (sin GTK).
+  --demo      Iniciar la interfaz GTK en modo demostración visual.
+
+Ejemplos:
+  ./venv/bin/python main.py              # Interfaz GTK (modo normal)
+  ./venv/bin/python main.py --console    # Modo consola (fallback sin GTK)
+  ./venv/bin/python main.py --demo       # Interfaz GTK en modo demostración
+        
+usage: main.py [-h] [--console] [--demo]
+
+Inicia Jarvis como asistente de escritorio GTK o en modo consola.
+
+options:
+  -h, --help  show this help message and exit
+  --console   Ejecutar Jarvis en modo consola clásico (sin GTK).
+  --demo      Iniciar la interfaz GTK en modo demostración visual.
+
+Ejemplos:
+  ./venv/bin/python main.py              # Interfaz GTK (modo normal)
+  ./venv/bin/python main.py --console    # Modo consola (fallback sin GTK)
+  ./venv/bin/python main.py --demo       # Interfaz GTK en modo demostración
+        
+usage: main.py [-h] [--console] [--demo]
+
+Inicia Jarvis como asistente de escritorio GTK o en modo consola.
+
+options:
+  -h, --help  show this help message and exit
+  --console   Ejecutar Jarvis en modo consola clásico (sin GTK).
+  --demo      Iniciar la interfaz GTK en modo demostración visual.
+
+Ejemplos:
+  ./venv/bin/python main.py              # Interfaz GTK (modo normal)
+  ./venv/bin/python main.py --console    # Modo consola (fallback sin GTK)
+  ./venv/bin/python main.py --demo       # Interfaz GTK en modo demostración
+        
+usage: main.py [-h] [--console] [--demo]
+
+Inicia Jarvis como asistente de escritorio GTK o en modo consola.
+
+options:
+  -h, --help  show this help message and exit
+  --console   Ejecutar Jarvis en modo consola clásico (sin GTK).
+  --demo      Iniciar la interfaz GTK en modo demostración visual.
+
+Ejemplos:
+  ./venv/bin/python main.py              # Interfaz GTK (modo normal)
+  ./venv/bin/python main.py --console    # Modo consola (fallback sin GTK)
+  ./venv/bin/python main.py --demo       # Interfaz GTK en modo demostración
+        
+usage: main.py [-h] [--console] [--demo]
+
+Inicia Jarvis como asistente de escritorio GTK o en modo consola.
+
+options:
+  -h, --help  show this help message and exit
+  --console   Ejecutar Jarvis en modo consola clásico (sin GTK).
+  --demo      Iniciar la interfaz GTK en modo demostración visual.
+
+Ejemplos:
+  ./venv/bin/python main.py              # Interfaz GTK (modo normal)
+  ./venv/bin/python main.py --console    # Modo consola (fallback sin GTK)
+  ./venv/bin/python main.py --demo       # Interfaz GTK en modo demostración
+        
+usage: main.py [-h] [--console] [--demo]
+
+Inicia Jarvis como asistente de escritorio GTK o en modo consola.
+
+options:
+  -h, --help  show this help message and exit
+  --console   Ejecutar Jarvis en modo consola clásico (sin GTK).
+  --demo      Iniciar la interfaz GTK en modo demostración visual.
+
+Ejemplos:
+  ./venv/bin/python main.py              # Interfaz GTK (modo normal)
+  ./venv/bin/python main.py --console    # Modo consola (fallback sin GTK)
+  ./venv/bin/python main.py --demo       # Interfaz GTK en modo demostración
+        

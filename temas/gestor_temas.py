@@ -57,6 +57,46 @@ class Paleta:
     BORDER: str         # Borde del widget
     BORDER_ACTIVE: str  # Borde cuando está activo
 
+    @property
+    def background(self) -> str:
+        return self.BACKGROUND
+
+    @property
+    def surface(self) -> str:
+        return self.SURFACE
+
+    @property
+    def primary(self) -> str:
+        return self.PRIMARY
+
+    @property
+    def secondary(self) -> str:
+        return self.SECONDARY
+
+    @property
+    def accent(self) -> str:
+        return self.ACCENT
+
+    @property
+    def text(self) -> str:
+        return self.TEXT
+
+    @property
+    def muted(self) -> str:
+        return self.TEXT_DIM
+
+    @property
+    def success(self) -> str:
+        return self.SUCCESS
+
+    @property
+    def warning(self) -> str:
+        return self.WARNING
+
+    @property
+    def error(self) -> str:
+        return self.ERROR
+
     # ── Semántica de estados → usa colores de la paleta ──────────────────────
     @property
     def color_reposo(self) -> str:
@@ -256,6 +296,30 @@ PALETA_NEUTRAL = Paleta(
     BORDER_ACTIVE="#64B5F6",
 )
 
+PALETA_HIGH_CONTRAST = Paleta(
+    nombre="jarvis_high_contrast",
+    descripcion="Alto contraste negro/amarillo/blanco — máxima legibilidad",
+    PRIMARY="#FFFF00",
+    SECONDARY="#00FFFF",
+    ACCENT="#FFFFFF",
+    BACKGROUND="#000000",
+    SURFACE="#121212",
+    SURFACE_2="#242424",
+    TEXT="#FFFFFF",
+    TEXT_DIM="#CCCCCC",
+    TEXT_ACCENT="#000000",
+    SUCCESS="#00FF00",
+    WARNING="#FFFF00",
+    ERROR="#FF0000",
+    GLOW="#FFFF00",
+    GLOW_2="#888800",
+    PARTICLE="#FFFF00",
+    PARTICLE_DIM="#666600",
+    WAVEFORM="#00FFFF",
+    BORDER="#FFFFFF",
+    BORDER_ACTIVE="#FFFF00",
+)
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # GESTOR DE TEMAS
@@ -275,6 +339,7 @@ class GestorTemas:
         "jarvis_red": PALETA_RED,
         "jarvis_amber": PALETA_AMBER,
         "jarvis_neutral": PALETA_NEUTRAL,
+        "jarvis_high_contrast": PALETA_HIGH_CONTRAST,
     }
 
     PALETA_DEFAULT = "jarvis_classic"
