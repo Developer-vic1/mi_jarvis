@@ -1,0 +1,496 @@
+{
+  "generado_en": 1786076857.6381931,
+  "apps": [
+    {
+      "nombre": "Antigravity",
+      "exec_cmd": "/usr/share/antigravity/antigravity %F",
+      "aliases": [
+        "antigravity"
+      ],
+      "icono": "antigravity",
+      "categorias": "TextEditor;Development;IDE;"
+    },
+    {
+      "nombre": "auto-cpufreq",
+      "exec_cmd": "auto-cpufreq-gtk",
+      "aliases": [
+        "auto",
+        "auto-cpufreq",
+        "cpufreq"
+      ],
+      "icono": "auto-cpufreq",
+      "categorias": "System;"
+    },
+    {
+      "nombre": "Tilix",
+      "exec_cmd": "tilix",
+      "aliases": [
+        "tilix",
+        "consola",
+        "tilix terminal",
+        "terminal"
+      ],
+      "icono": "com.gexperts.Tilix",
+      "categorias": "System;TerminalEmulator;X-GNOME-Utilities;"
+    },
+    {
+      "nombre": "Extension Manager",
+      "exec_cmd": "extension-manager %U",
+      "aliases": [
+        "extension manager",
+        "manager",
+        "extension"
+      ],
+      "icono": "com.mattjakeman.ExtensionManager",
+      "categorias": "GTK;Utility"
+    },
+    {
+      "nombre": "Warp",
+      "exec_cmd": "warp-terminal %U",
+      "aliases": [
+        "warp terminal",
+        "warp"
+      ],
+      "icono": "dev.warp.Warp",
+      "categorias": "System;TerminalEmulator;"
+    },
+    {
+      "nombre": "ImageMagick (color depth=q16)",
+      "exec_cmd": "/usr/bin/display-im6.q16 -nostdin %F",
+      "aliases": [
+        "depth=q16)",
+        "imagemagick",
+        "imagemagick (color depth=q16)",
+        "(color"
+      ],
+      "icono": "display-im6.q16",
+      "categorias": "Graphics;"
+    },
+    {
+      "nombre": "Docker Desktop",
+      "exec_cmd": "/opt/docker-desktop/bin/docker-desktop",
+      "aliases": [
+        "desktop",
+        "contenedores",
+        "docker",
+        "docker desktop"
+      ],
+      "icono": "/opt/docker-desktop/share/icon.original.png",
+      "categorias": "Development;"
+    },
+    {
+      "nombre": "Language Support",
+      "exec_cmd": "/usr/bin/gnome-language-selector",
+      "aliases": [
+        "language support",
+        "support",
+        "language"
+      ],
+      "icono": "preferences-desktop-locale",
+      "categorias": "GNOME;GTK;Settings;DesktopSettings;X-GNOME-Settings-Panel;X-Unity-Settings-Panel;X-GNOME-PersonalSettings"
+    },
+    {
+      "nombre": "Startup Applications",
+      "exec_cmd": "gnome-session-properties",
+      "aliases": [
+        "applications",
+        "startup applications",
+        "startup"
+      ],
+      "icono": "session-properties",
+      "categorias": "GTK;GNOME;Settings;X-GNOME-PersonalSettings;"
+    },
+    {
+      "nombre": "GNOME System Monitor",
+      "exec_cmd": "gnome-system-monitor",
+      "aliases": [
+        "gnome monitor",
+        "system",
+        "monitor",
+        "gnome",
+        "gnome system monitor",
+        "procesos"
+      ],
+      "icono": "org.gnome.SystemMonitor",
+      "categorias": "GNOME;GTK;System;Monitor;"
+    },
+    {
+      "nombre": "Google Chrome",
+      "exec_cmd": "/usr/bin/google-chrome-stable %U",
+      "aliases": [
+        "chrome",
+        "chromium",
+        "google chrome",
+        "navegador",
+        "google"
+      ],
+      "icono": "google-chrome",
+      "categorias": "Network;WebBrowser;"
+    },
+    {
+      "nombre": "Htop",
+      "exec_cmd": "htop",
+      "aliases": [
+        "monitor procesos",
+        "top",
+        "htop"
+      ],
+      "icono": "htop",
+      "categorias": "System;Monitor;ConsoleOnly;"
+    },
+    {
+      "nombre": "Input Method",
+      "exec_cmd": "im-config",
+      "aliases": [
+        "input method",
+        "input",
+        "method"
+      ],
+      "icono": "input-keyboard",
+      "categorias": "Settings"
+    },
+    {
+      "nombre": "TeXInfo",
+      "exec_cmd": "info",
+      "aliases": [
+        "texinfo"
+      ],
+      "icono": "dialog-information",
+      "categorias": "Utility;Documentation;ConsoleOnly;"
+    },
+    {
+      "nombre": "Advanced Network Configuration",
+      "exec_cmd": "nm-connection-editor",
+      "aliases": [
+        "advanced network configuration",
+        "advanced",
+        "configuration",
+        "network"
+      ],
+      "icono": "preferences-system-network",
+      "categorias": "GNOME;GTK;Settings;X-GNOME-NetworkSettings;X-GNOME-Utilities;"
+    },
+    {
+      "nombre": "NVIDIA X Server Settings",
+      "exec_cmd": "/usr/bin/nvidia-settings",
+      "aliases": [
+        "nvidia",
+        "server",
+        "nvidia x server settings",
+        "settings"
+      ],
+      "icono": "nvidia-settings",
+      "categorias": "System;Settings;"
+    },
+    {
+      "nombre": "Opera GX",
+      "exec_cmd": "opera-gx %U",
+      "aliases": [
+        "opera gx",
+        "navegador opera",
+        "opera"
+      ],
+      "icono": "opera-gx",
+      "categorias": "Network;WebBrowser;"
+    },
+    {
+      "nombre": "IBus Preferences",
+      "exec_cmd": "ibus-setup",
+      "aliases": [
+        "ibus preferences",
+        "ibus",
+        "preferences"
+      ],
+      "icono": "ibus-setup",
+      "categorias": "Settings;"
+    },
+    {
+      "nombre": "Calculator",
+      "exec_cmd": "gnome-calculator",
+      "aliases": [
+        "calculadora",
+        "calculator"
+      ],
+      "icono": "org.gnome.Calculator",
+      "categorias": "GNOME;GTK;Utility;Calculator;"
+    },
+    {
+      "nombre": "Characters",
+      "exec_cmd": "/usr/bin/gnome-characters",
+      "aliases": [
+        "characters"
+      ],
+      "icono": "org.gnome.Characters",
+      "categorias": "GNOME;GTK;Utility;X-GNOME-Utilities;"
+    },
+    {
+      "nombre": "Disks",
+      "exec_cmd": "gnome-disks",
+      "aliases": [
+        "disks"
+      ],
+      "icono": "org.gnome.DiskUtility",
+      "categorias": "GNOME;GTK;Utility;X-GNOME-Utilities;Settings;HardwareSettings;"
+    },
+    {
+      "nombre": "Document Viewer",
+      "exec_cmd": "evince %U",
+      "aliases": [
+        "viewer",
+        "document viewer",
+        "visor de documentos",
+        "document",
+        "pdf",
+        "evince"
+      ],
+      "icono": "org.gnome.Evince",
+      "categorias": "GNOME;GTK;Office;Viewer;Graphics;2DGraphics;VectorGraphics;"
+    },
+    {
+      "nombre": "Logs",
+      "exec_cmd": "gnome-logs",
+      "aliases": [
+        "logs"
+      ],
+      "icono": "org.gnome.Logs",
+      "categorias": "GTK;GNOME;System;Monitor;Utility;X-GNOME-Utilities;"
+    },
+    {
+      "nombre": "Files",
+      "exec_cmd": "nautilus --new-window %U",
+      "aliases": [
+        "nautilus",
+        "explorador",
+        "files",
+        "archivos"
+      ],
+      "icono": "org.gnome.Nautilus",
+      "categorias": "GNOME;GTK;Utility;Core;FileManager;"
+    },
+    {
+      "nombre": "Power Statistics",
+      "exec_cmd": "gnome-power-statistics",
+      "aliases": [
+        "power statistics",
+        "statistics",
+        "power"
+      ],
+      "icono": "org.gnome.PowerStats",
+      "categorias": "GNOME;GTK;System;Monitor;"
+    },
+    {
+      "nombre": "Settings",
+      "exec_cmd": "gnome-control-center",
+      "aliases": [
+        "ajustes",
+        "settings",
+        "configuracion"
+      ],
+      "icono": "org.gnome.Settings",
+      "categorias": "GNOME;GTK;Settings;"
+    },
+    {
+      "nombre": "Software",
+      "exec_cmd": "gnome-software %U",
+      "aliases": [
+        "tienda",
+        "gnome software",
+        "software"
+      ],
+      "icono": "org.gnome.Software",
+      "categorias": "GNOME;GTK;System;PackageManager;"
+    },
+    {
+      "nombre": "System Monitor",
+      "exec_cmd": "gnome-system-monitor",
+      "aliases": [
+        "system",
+        "system monitor",
+        "monitor del sistema",
+        "monitor"
+      ],
+      "icono": "org.gnome.SystemMonitor",
+      "categorias": "GNOME;GTK;System;Monitor;"
+    },
+    {
+      "nombre": "Terminal",
+      "exec_cmd": "gnome-terminal",
+      "aliases": [
+        "consola gnome",
+        "gnome terminal",
+        "terminal gnome",
+        "terminal"
+      ],
+      "icono": "org.gnome.Terminal",
+      "categorias": "GNOME;GTK;System;TerminalEmulator;"
+    },
+    {
+      "nombre": "Text Editor",
+      "exec_cmd": "gnome-text-editor %U",
+      "aliases": [
+        "editor de texto",
+        "text editor",
+        "text",
+        "bloc de notas",
+        "editor"
+      ],
+      "icono": "org.gnome.TextEditor",
+      "categorias": "GNOME;GTK;Utility;TextEditor;"
+    },
+    {
+      "nombre": "Disk Usage Analyzer",
+      "exec_cmd": "baobab %U",
+      "aliases": [
+        "analyzer",
+        "disk",
+        "usage",
+        "disk usage analyzer"
+      ],
+      "icono": "org.gnome.baobab",
+      "categorias": "GTK;GNOME;System;Filesystem;X-GNOME-Utilities;"
+    },
+    {
+      "nombre": "Clocks",
+      "exec_cmd": "gnome-clocks",
+      "aliases": [
+        "alarma",
+        "clocks",
+        "reloj"
+      ],
+      "icono": "org.gnome.clocks",
+      "categorias": "GNOME;GTK;Utility;Clock;"
+    },
+    {
+      "nombre": "Image Viewer",
+      "exec_cmd": "eog %U",
+      "aliases": [
+        "viewer",
+        "galeria",
+        "fotos",
+        "image",
+        "image viewer",
+        "visor de imagenes"
+      ],
+      "icono": "org.gnome.eog",
+      "categorias": "GNOME;GTK;Graphics;2DGraphics;RasterGraphics;Viewer;"
+    },
+    {
+      "nombre": "Fonts",
+      "exec_cmd": "gnome-font-viewer %u",
+      "aliases": [
+        "fonts"
+      ],
+      "icono": "org.gnome.font-viewer",
+      "categorias": "GTK;GNOME;Utility;X-GNOME-Utilities;"
+    },
+    {
+      "nombre": "Passwords and Keys",
+      "exec_cmd": "seahorse %u",
+      "aliases": [
+        "passwords",
+        "passwords and keys",
+        "and",
+        "keys"
+      ],
+      "icono": "org.gnome.seahorse.Application",
+      "categorias": "GNOME;GTK;Security;Utility;DesktopSettings;X-XFCE-SettingsDialog;"
+    },
+    {
+      "nombre": "Tweaks",
+      "exec_cmd": "gnome-tweaks",
+      "aliases": [
+        "tweaks",
+        "personalizacion",
+        "ajustes gnome"
+      ],
+      "icono": "org.gnome.tweaks",
+      "categorias": "GNOME;GTK;Settings;"
+    },
+    {
+      "nombre": "pgAdmin 4",
+      "exec_cmd": "/usr/pgadmin4/bin/pgadmin4",
+      "aliases": [
+        "pgadmin 4",
+        "pgadmin",
+        "postgres admin",
+        "base de datos",
+        "pg admin"
+      ],
+      "icono": "pgadmin4",
+      "categorias": "Application;Development;"
+    },
+    {
+      "nombre": "Additional Drivers",
+      "exec_cmd": "/usr/bin/software-properties-gtk --open-tab=4",
+      "aliases": [
+        "additional drivers",
+        "additional",
+        "drivers"
+      ],
+      "icono": "jockey",
+      "categorias": "X-XFCE;GTK;Settings;HardwareSettings"
+    },
+    {
+      "nombre": "Software & Updates",
+      "exec_cmd": "software-properties-gtk",
+      "aliases": [
+        "updates",
+        "software & updates",
+        "software"
+      ],
+      "icono": "software-properties",
+      "categorias": "GNOME;GTK;Settings;X-GNOME-SystemSettings;X-GNOME-Settings-Panel;X-Unity-Settings-Panel;"
+    },
+    {
+      "nombre": "Software Updater",
+      "exec_cmd": "/usr/bin/update-manager",
+      "aliases": [
+        "software updater",
+        "updater",
+        "software"
+      ],
+      "icono": "system-software-update",
+      "categorias": "System;Settings;"
+    },
+    {
+      "nombre": "Vim",
+      "exec_cmd": "vim %F",
+      "aliases": [
+        "vim"
+      ],
+      "icono": "gvim",
+      "categorias": "Utility;TextEditor;"
+    },
+    {
+      "nombre": "Help",
+      "exec_cmd": "yelp %u",
+      "aliases": [
+        "help"
+      ],
+      "icono": "org.gnome.Yelp",
+      "categorias": "GNOME;GTK;Core;Documentation;Utility;"
+    },
+    {
+      "nombre": "Antigravity IDE",
+      "exec_cmd": "/usr/local/bin/antigravity-ide %U",
+      "aliases": [
+        "antigravity ide",
+        "antigravity",
+        "ide"
+      ],
+      "icono": "/opt/antigravity-ide/resources/app/resources/linux/code.png",
+      "categorias": "Development;IDE;"
+    },
+    {
+      "nombre": "WhatsApp Web",
+      "exec_cmd": "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm",
+      "aliases": [
+        "whatsapp web",
+        "web",
+        "whatsapp"
+      ],
+      "icono": "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default",
+      "categorias": ""
+    }
+  ]
+}

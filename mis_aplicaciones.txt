@@ -1,0 +1,139 @@
+
+============================================================
+      REGISTRO DE APLICACIONES INSTALADAS EN LINUX
+============================================================
+
+Aplicación: Logs
+Comando (Exec): gnome-logs
+------------------------------------------------------------
+Aplicación: pgAdmin 4
+Comando (Exec): /usr/pgadmin4/bin/pgadmin4
+------------------------------------------------------------
+Aplicación: Power Statistics
+Comando (Exec): gnome-power-statistics
+------------------------------------------------------------
+Aplicación: System Monitor
+Comando (Exec): gnome-system-monitor
+------------------------------------------------------------
+Aplicación: Help
+Comando (Exec): yelp %u
+------------------------------------------------------------
+Aplicación: Files
+Comando (Exec): nautilus --new-window %U
+------------------------------------------------------------
+Aplicación: Software
+Comando (Exec): gnome-software %U
+------------------------------------------------------------
+Aplicación: Software & Updates
+Comando (Exec): software-properties-gtk
+------------------------------------------------------------
+Aplicación: Settings
+Comando (Exec): gnome-control-center
+------------------------------------------------------------
+Aplicación: IBus Preferences
+Comando (Exec): ibus-setup
+------------------------------------------------------------
+Aplicación: GNOME System Monitor
+Comando (Exec): gnome-system-monitor
+------------------------------------------------------------
+Aplicación: Extension Manager
+Comando (Exec): extension-manager %U
+------------------------------------------------------------
+Aplicación: Advanced Network Configuration
+Comando (Exec): nm-connection-editor
+------------------------------------------------------------
+Aplicación: Input Method
+Comando (Exec): im-config
+------------------------------------------------------------
+Aplicación: Image Viewer
+Comando (Exec): eog %U
+------------------------------------------------------------
+Aplicación: Software Updater
+Comando (Exec): /usr/bin/update-manager
+------------------------------------------------------------
+Aplicación: Warp
+Comando (Exec): warp-terminal %U
+------------------------------------------------------------
+Aplicación: Startup Applications
+Comando (Exec): gnome-session-properties
+------------------------------------------------------------
+Aplicación: Document Viewer
+Comando (Exec): evince %U
+------------------------------------------------------------
+Aplicación: Tweaks
+Comando (Exec): gnome-tweaks
+------------------------------------------------------------
+Aplicación: NVIDIA X Server Settings
+Comando (Exec): /usr/bin/nvidia-settings
+------------------------------------------------------------
+Aplicación: Opera GX
+Comando (Exec): opera-gx %U
+------------------------------------------------------------
+Aplicación: Vim
+Comando (Exec): vim %F
+------------------------------------------------------------
+Aplicación: Clocks
+Comando (Exec): gnome-clocks
+------------------------------------------------------------
+Aplicación: Antigravity
+Comando (Exec): /usr/share/antigravity/antigravity %F
+------------------------------------------------------------
+Aplicación: Calculator
+Comando (Exec): gnome-calculator
+------------------------------------------------------------
+Aplicación: Text Editor
+Comando (Exec): gnome-text-editor %U
+------------------------------------------------------------
+Aplicación: Characters
+Comando (Exec): /usr/bin/gnome-characters
+------------------------------------------------------------
+Aplicación: Additional Drivers
+Comando (Exec): /usr/bin/software-properties-gtk --open-tab=4
+------------------------------------------------------------
+Aplicación: Disk Usage Analyzer
+Comando (Exec): baobab %U
+------------------------------------------------------------
+Aplicación: Tilix
+Comando (Exec): tilix
+------------------------------------------------------------
+Aplicación: Google Chrome
+Comando (Exec): /usr/bin/google-chrome-stable %U
+------------------------------------------------------------
+Aplicación: Passwords and Keys
+Comando (Exec): seahorse %u
+------------------------------------------------------------
+Aplicación: auto-cpufreq
+Comando (Exec): auto-cpufreq-gtk
+------------------------------------------------------------
+Aplicación: Htop
+Comando (Exec): htop
+------------------------------------------------------------
+Aplicación: Fonts
+Comando (Exec): gnome-font-viewer %u
+------------------------------------------------------------
+Aplicación: Docker Desktop
+Comando (Exec): /opt/docker-desktop/bin/docker-desktop
+------------------------------------------------------------
+Aplicación: Terminal
+Comando (Exec): gnome-terminal
+------------------------------------------------------------
+Aplicación: Disks
+Comando (Exec): gnome-disks
+------------------------------------------------------------
+Aplicación: ImageMagick (color depth=q16)
+Comando (Exec): /usr/bin/display-im6.q16 -nostdin %F
+------------------------------------------------------------
+Aplicación: Language Support
+Comando (Exec): /usr/bin/gnome-language-selector
+------------------------------------------------------------
+Aplicación: TeXInfo
+Comando (Exec): info
+------------------------------------------------------------
+Aplicación: WhatsApp Web
+Comando (Exec): /opt/google/chrome/google-chrome --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
+------------------------------------------------------------
+Aplicación: Antigravity IDE
+Comando (Exec): /usr/local/bin/antigravity-ide %U
+------------------------------------------------------------
+
+Total de aplicaciones analizadas: 44

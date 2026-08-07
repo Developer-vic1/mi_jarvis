@@ -1,0 +1,168 @@
+2026-08-07 00:30:09 | INFO     | jarvis.main          | ==================================================
+2026-08-07 00:30:09 | INFO     | jarvis.main          | Jarvis iniciando...
+2026-08-07 00:30:09 | INFO     | jarvis.cerebro       | Inicializando cerebro de Jarvis...
+2026-08-07 00:30:09 | INFO     | jarvis.plugins       | Plugins cargados: 0 nuevos (9 total).
+2026-08-07 00:30:09 | INFO     | jarvis.cerebro       | Plugins cargados: 9 (43 intenciones).
+2026-08-07 00:30:09 | INFO     | jarvis.voz           | TTS: Sistemas operativos. A tu disposición.
+2026-08-07 00:30:13 | INFO     | jarvis.main          | Jarvis activo. Esperando wake word.
+2026-08-07 00:30:13 | INFO     | jarvis.escucha       | Recalibrando ruido ambiental.
+2026-08-07 00:30:13 | INFO     | jarvis.escucha       | Calibración completada.
+2026-08-07 00:30:17 | INFO     | jarvis.escucha       | Texto reconocido: 'abre editor de código'
+2026-08-07 00:30:17 | INFO     | jarvis.main          | Usuario dijo: 'abre editor de código'
+2026-08-07 00:30:17 | INFO     | jarvis.cerebro       | Procesando: 'abre editor de código' (estado=REPOSO)
+2026-08-07 00:30:22 | INFO     | jarvis.escucha       | Texto reconocido: 'abre editor de código'
+2026-08-07 00:30:22 | INFO     | jarvis.main          | Usuario dijo: 'abre editor de código'
+2026-08-07 00:30:22 | INFO     | jarvis.cerebro       | Procesando: 'abre editor de código' (estado=REPOSO)
+2026-08-07 00:30:27 | INFO     | jarvis.escucha       | Texto reconocido: 'jarvis abre base'
+2026-08-07 00:30:27 | INFO     | jarvis.main          | Usuario dijo: 'jarvis abre base'
+2026-08-07 00:30:27 | INFO     | jarvis.cerebro       | Procesando: 'jarvis abre base' (estado=REPOSO)
+2026-08-07 00:30:27 | INFO     | jarvis.cerebro       | Sesión activada.
+2026-08-07 00:30:27 | INFO     | jarvis.voz           | TTS: Escuchando.
+2026-08-07 00:30:29 | INFO     | jarvis.nlp           | NLP: 'abre base' → intent=ABRIR_APP (100%) ent={'app': 'base'}
+2026-08-07 00:30:29 | INFO     | jarvis.apps          | Índice cargado: 44 apps (0.0h de antigüedad).
+2026-08-07 00:30:29 | INFO     | jarvis.apps          | App encontrada (fuzzy): 'base' → 'pgAdmin 4' (score=90)
+2026-08-07 00:30:29 | INFO     | jarvis.apps          | App lanzada: 'pgAdmin 4' → ['/usr/pgadmin4/bin/pgadmin4']
+2026-08-07 00:30:29 | INFO     | jarvis.voz           | TTS: Un segundo pgAdmin 4.
+2026-08-07 00:30:37 | INFO     | jarvis.escucha       | Texto reconocido: 'abre visual studio'
+2026-08-07 00:30:37 | INFO     | jarvis.main          | Usuario dijo: 'abre visual studio'
+2026-08-07 00:30:37 | INFO     | jarvis.cerebro       | Procesando: 'abre visual studio' (estado=ESCUCHANDO)
+2026-08-07 00:30:37 | INFO     | jarvis.nlp           | NLP: 'abre visual studio' → intent=ABRIR_APP (100%) ent={'app': 'visual studio'}
+2026-08-07 00:30:37 | INFO     | jarvis.apps          | App encontrada (fuzzy): 'visual studio' → 'Vim' (score=72)
+2026-08-07 00:30:37 | ERROR    | jarvis.apps          | Ejecutable no encontrado para 'Vim': vim %F
+2026-08-07 00:30:37 | INFO     | jarvis.voz           | TTS: No pude abrir Vim. Puede que el programa no esté disponible.
+2026-08-07 00:30:44 | INFO     | jarvis.escucha       | Texto reconocido: 'abre visual'
+2026-08-07 00:30:44 | INFO     | jarvis.main          | Usuario dijo: 'abre visual'
+2026-08-07 00:30:44 | INFO     | jarvis.cerebro       | Procesando: 'abre visual' (estado=ESCUCHANDO)
+2026-08-07 00:30:44 | INFO     | jarvis.nlp           | NLP: 'abre visual' → intent=ABRIR_APP (100%) ent={'app': 'visual'}
+2026-08-07 00:30:44 | INFO     | jarvis.apps          | App encontrada (fuzzy): 'visual' → 'Vim' (score=72)
+2026-08-07 00:30:44 | ERROR    | jarvis.apps          | Ejecutable no encontrado para 'Vim': vim %F
+2026-08-07 00:30:44 | INFO     | jarvis.voz           | TTS: No pude abrir Vim. Puede que el programa no esté disponible.
+2026-08-07 00:30:51 | INFO     | jarvis.escucha       | Texto reconocido: 'abre whatsapp'
+2026-08-07 00:30:51 | INFO     | jarvis.main          | Usuario dijo: 'abre whatsapp'
+2026-08-07 00:30:51 | INFO     | jarvis.cerebro       | Procesando: 'abre whatsapp' (estado=ESCUCHANDO)
+2026-08-07 00:30:51 | INFO     | jarvis.nlp           | NLP: 'abre whatsapp' → intent=ABRIR_APP (100%) ent={'app': 'whatsapp'}
+2026-08-07 00:30:51 | INFO     | jarvis.apps          | App encontrada (exacta): 'whatsapp' → 'WhatsApp Web'
+2026-08-07 00:30:51 | INFO     | jarvis.apps          | App lanzada: 'WhatsApp Web' → ['/opt/google/chrome/google-chrome', '--profile-directory=Default', '--app-id=hnpfjngllnobngcgfapefoaidbinmjnm']
+2026-08-07 00:30:51 | INFO     | jarvis.voz           | TTS: Abriendo WhatsApp Web.
+2026-08-07 00:30:57 | INFO     | jarvis.escucha       | Texto reconocido: 'sí es de whatsapp'
+2026-08-07 00:30:57 | INFO     | jarvis.main          | Usuario dijo: 'sí es de whatsapp'
+2026-08-07 00:30:57 | INFO     | jarvis.cerebro       | Procesando: 'sí es de whatsapp' (estado=ESCUCHANDO)
+2026-08-07 00:30:57 | INFO     | jarvis.nlp           | NLP: 'sí es de whatsapp' → intent=ABRIR_WEB (74%) ent={'sitio': 'si es de whatsapp'}
+2026-08-07 00:30:57 | INFO     | jarvis.web           | URL abierta: https://web.whatsapp.com
+2026-08-07 00:30:57 | INFO     | jarvis.voz           | TTS: Abriendo Whatsapp.
+2026-08-07 00:31:15 | INFO     | jarvis.escucha       | Texto reconocido: 'qué hora es'
+2026-08-07 00:31:15 | INFO     | jarvis.main          | Usuario dijo: 'qué hora es'
+2026-08-07 00:31:15 | INFO     | jarvis.cerebro       | Procesando: 'qué hora es' (estado=ESCUCHANDO)
+2026-08-07 00:31:15 | INFO     | jarvis.nlp           | NLP: 'qué hora es' → intent=HORA (100%) ent={}
+2026-08-07 00:31:15 | INFO     | jarvis.voz           | TTS: Son las 12:31 AM.
+2026-08-07 00:31:22 | INFO     | jarvis.escucha       | Texto reconocido: 'qué día es hoy'
+2026-08-07 00:31:22 | INFO     | jarvis.main          | Usuario dijo: 'qué día es hoy'
+2026-08-07 00:31:22 | INFO     | jarvis.cerebro       | Procesando: 'qué día es hoy' (estado=ESCUCHANDO)
+2026-08-07 00:31:22 | INFO     | jarvis.nlp           | NLP: 'qué día es hoy' → intent=FECHA (86%) ent={}
+2026-08-07 00:31:22 | INFO     | jarvis.voz           | TTS: Hoy es 7 de agosto de 2026.
+2026-08-07 00:31:31 | INFO     | jarvis.escucha       | Texto reconocido: 'qué significa mouse'
+2026-08-07 00:31:31 | INFO     | jarvis.main          | Usuario dijo: 'qué significa mouse'
+2026-08-07 00:31:31 | INFO     | jarvis.cerebro       | Procesando: 'qué significa mouse' (estado=ESCUCHANDO)
+2026-08-07 00:31:31 | INFO     | jarvis.nlp           | NLP: 'qué significa mouse' → intent=DEFINIR (92%) ent={'palabra': 'mouse'}
+2026-08-07 00:31:31 | INFO     | jarvis.definiciones  | Buscando definición de: 'mouse'
+2026-08-07 00:31:35 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'mouse'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 00:31:46 | INFO     | jarvis.escucha       | Texto reconocido: 'qué significa ratón'
+2026-08-07 00:31:46 | INFO     | jarvis.main          | Usuario dijo: 'qué significa ratón'
+2026-08-07 00:31:46 | INFO     | jarvis.cerebro       | Procesando: 'qué significa ratón' (estado=ESCUCHANDO)
+2026-08-07 00:31:46 | INFO     | jarvis.nlp           | NLP: 'qué significa ratón' → intent=DEFINIR (92%) ent={'palabra': 'raton'}
+2026-08-07 00:31:46 | INFO     | jarvis.definiciones  | Buscando definición de: 'raton'
+2026-08-07 00:31:46 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'raton'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 00:31:58 | INFO     | jarvis.escucha       | Texto reconocido: 'abrir youtube'
+2026-08-07 00:31:58 | INFO     | jarvis.main          | Usuario dijo: 'abrir youtube'
+2026-08-07 00:31:58 | INFO     | jarvis.cerebro       | Procesando: 'abrir youtube' (estado=ESCUCHANDO)
+2026-08-07 00:31:58 | INFO     | jarvis.nlp           | NLP: 'abrir youtube' → intent=ABRIR_APP (100%) ent={'app': 'youtube'}
+2026-08-07 00:31:58 | INFO     | jarvis.apps          | App no encontrada: 'youtube'
+2026-08-07 00:31:58 | INFO     | jarvis.voz           | TTS: No encontré ninguna aplicación llamada 'youtube'. ¿Puedes intentarlo con otro nombre?
+2026-08-07 00:32:08 | INFO     | jarvis.escucha       | Texto reconocido: 'firefox'
+2026-08-07 00:32:08 | INFO     | jarvis.main          | Usuario dijo: 'firefox'
+2026-08-07 00:32:08 | INFO     | jarvis.cerebro       | Procesando: 'firefox' (estado=ESCUCHANDO)
+2026-08-07 00:32:08 | INFO     | jarvis.nlp           | NLP: 'firefox' → intent=None (0%) ent={}
+2026-08-07 00:32:08 | INFO     | jarvis.voz           | TTS: No sé hacer eso aún. ¿Puedo ayudarte con algo más?
+2026-08-07 00:32:14 | INFO     | jarvis.escucha       | Texto reconocido: 'abrir firefox'
+2026-08-07 00:32:14 | INFO     | jarvis.main          | Usuario dijo: 'abrir firefox'
+2026-08-07 00:32:14 | INFO     | jarvis.cerebro       | Procesando: 'abrir firefox' (estado=ESCUCHANDO)
+2026-08-07 00:32:14 | INFO     | jarvis.nlp           | NLP: 'abrir firefox' → intent=ABRIR_APP (100%) ent={'app': 'firefox'}
+2026-08-07 00:32:14 | INFO     | jarvis.apps          | App no encontrada: 'firefox'
+2026-08-07 00:32:14 | INFO     | jarvis.voz           | TTS: No encontré ninguna aplicación llamada 'firefox'. ¿Puedes intentarlo con otro nombre?
+2026-08-07 00:32:23 | INFO     | jarvis.escucha       | Texto reconocido: 'abrir antigravity'
+2026-08-07 00:32:23 | INFO     | jarvis.main          | Usuario dijo: 'abrir antigravity'
+2026-08-07 00:32:23 | INFO     | jarvis.cerebro       | Procesando: 'abrir antigravity' (estado=ESCUCHANDO)
+2026-08-07 00:32:23 | INFO     | jarvis.nlp           | NLP: 'abrir antigravity' → intent=ABRIR_APP (100%) ent={'app': 'antigravity'}
+2026-08-07 00:32:23 | INFO     | jarvis.apps          | App encontrada (exacta): 'antigravity' → 'Antigravity'
+2026-08-07 00:32:23 | INFO     | jarvis.apps          | App lanzada: 'Antigravity' → ['/usr/share/antigravity/antigravity']
+2026-08-07 00:32:23 | INFO     | jarvis.voz           | TTS: Iniciando el programa Antigravity.
+2026-08-07 00:32:37 | INFO     | jarvis.escucha       | Texto reconocido: 'en qué ventana estoy'
+2026-08-07 00:32:37 | INFO     | jarvis.main          | Usuario dijo: 'en qué ventana estoy'
+2026-08-07 00:32:37 | INFO     | jarvis.cerebro       | Procesando: 'en qué ventana estoy' (estado=ESCUCHANDO)
+2026-08-07 00:32:37 | INFO     | jarvis.nlp           | NLP: 'en qué ventana estoy' → intent=MOVER (80%) ent={'objeto': 'en que ventana estoy'}
+2026-08-07 00:32:37 | INFO     | jarvis.voz           | TTS: Para mover necesito saber el origen y destino. Ej: 'mueve proyecto al escritorio'.
+2026-08-07 00:32:49 | INFO     | jarvis.escucha       | Texto reconocido: 'qué hora es'
+2026-08-07 00:32:49 | INFO     | jarvis.main          | Usuario dijo: 'qué hora es'
+2026-08-07 00:32:49 | INFO     | jarvis.cerebro       | Procesando: 'qué hora es' (estado=ESCUCHANDO)
+2026-08-07 00:32:49 | INFO     | jarvis.nlp           | NLP: 'qué hora es' → intent=HORA (100%) ent={}
+2026-08-07 00:32:49 | INFO     | jarvis.voz           | TTS: Son las 12:32 AM.
+2026-08-07 00:32:54 | INFO     | jarvis.escucha       | Texto reconocido: 'descansa'
+2026-08-07 00:32:54 | INFO     | jarvis.main          | Usuario dijo: 'descansa'
+2026-08-07 00:32:54 | INFO     | jarvis.cerebro       | Procesando: 'descansa' (estado=ESCUCHANDO)
+2026-08-07 00:32:54 | INFO     | jarvis.cerebro       | Sesión desactivada. Modo reposo.
+2026-08-07 00:32:54 | INFO     | jarvis.voz           | TTS: Descansando. Estaré aquí.
+2026-08-07 00:33:02 | INFO     | jarvis.escucha       | Texto reconocido: 'abre bases de datos'
+2026-08-07 00:33:02 | INFO     | jarvis.main          | Usuario dijo: 'abre bases de datos'
+2026-08-07 00:33:02 | INFO     | jarvis.cerebro       | Procesando: 'abre bases de datos' (estado=REPOSO)
+2026-08-07 00:33:07 | INFO     | jarvis.escucha       | Texto reconocido: 'jarvis'
+2026-08-07 00:33:07 | INFO     | jarvis.main          | Usuario dijo: 'jarvis'
+2026-08-07 00:33:07 | INFO     | jarvis.cerebro       | Procesando: 'jarvis' (estado=REPOSO)
+2026-08-07 00:33:07 | INFO     | jarvis.cerebro       | Sesión activada.
+2026-08-07 00:33:07 | INFO     | jarvis.voz           | TTS: ¿En qué puedo ayudarte?
+2026-08-07 00:33:17 | INFO     | jarvis.escucha       | Texto reconocido: 'qué significa zampoña'
+2026-08-07 00:33:17 | INFO     | jarvis.main          | Usuario dijo: 'qué significa zampoña'
+2026-08-07 00:33:17 | INFO     | jarvis.cerebro       | Procesando: 'qué significa zampoña' (estado=ESCUCHANDO)
+2026-08-07 00:33:17 | INFO     | jarvis.nlp           | NLP: 'qué significa zampoña' → intent=DEFINIR (92%) ent={'palabra': 'zampoña'}
+2026-08-07 00:33:17 | INFO     | jarvis.definiciones  | Buscando definición de: 'zampoña'
+2026-08-07 00:33:18 | INFO     | jarvis.voz           | TTS: No encontré una definición para 'zampoña'. Puede que sea un término muy especializado o un nombre propio.
+2026-08-07 00:33:37 | INFO     | jarvis.voz           | TTS: Sistema interrumpido. Hasta luego.
+2026-08-07 00:33:40 | INFO     | jarvis.main          | Jarvis detenido por KeyboardInterrupt.
+2026-08-07 00:49:06 | INFO     | jarvis.main          | ==================================================
+2026-08-07 00:49:06 | INFO     | jarvis.main          | Jarvis iniciando...
+2026-08-07 00:49:06 | INFO     | jarvis.cerebro       | Inicializando cerebro de Jarvis...
+2026-08-07 00:49:06 | INFO     | jarvis.plugins       | Plugins cargados: 0 nuevos (9 total).
+2026-08-07 00:49:06 | INFO     | jarvis.cerebro       | Plugins cargados: 9 (44 intenciones).
+2026-08-07 00:49:06 | INFO     | jarvis.voz           | TTS: Jarvis al servicio. ¿Qué necesitas?
+2026-08-07 00:49:09 | INFO     | jarvis.main          | Jarvis activo. Esperando wake word.
+2026-08-07 00:49:09 | INFO     | jarvis.escucha       | Recalibrando ruido ambiental.
+2026-08-07 00:49:10 | INFO     | jarvis.escucha       | Calibración completada.
+2026-08-07 00:49:17 | INFO     | jarvis.escucha       | Texto reconocido: 'abrir integrador'
+2026-08-07 00:49:17 | INFO     | jarvis.main          | Usuario dijo: 'abrir integrador'
+2026-08-07 00:49:17 | INFO     | jarvis.cerebro       | Procesando: 'abrir integrador' (estado=REPOSO)
+2026-08-07 00:49:20 | INFO     | jarvis.escucha       | Texto reconocido: 'jarvis'
+2026-08-07 00:49:20 | INFO     | jarvis.main          | Usuario dijo: 'jarvis'
+2026-08-07 00:49:20 | INFO     | jarvis.cerebro       | Procesando: 'jarvis' (estado=REPOSO)
+2026-08-07 00:49:20 | INFO     | jarvis.cerebro       | Sesión activada.
+2026-08-07 00:49:20 | INFO     | jarvis.voz           | TTS: A tus órdenes.
+2026-08-07 00:49:25 | INFO     | jarvis.escucha       | Texto reconocido: 'abre integra'
+2026-08-07 00:49:25 | INFO     | jarvis.main          | Usuario dijo: 'abre integra'
+2026-08-07 00:49:25 | INFO     | jarvis.cerebro       | Procesando: 'abre integra' (estado=ESCUCHANDO)
+2026-08-07 00:49:25 | INFO     | jarvis.nlp           | NLP: 'abre integra' → intent=ABRIR_APP (100%) ent={'app': 'integra'}
+2026-08-07 00:49:25 | INFO     | jarvis.apps          | Índice cargado: 44 apps (0.4h de antigüedad).
+2026-08-07 00:49:25 | INFO     | jarvis.apps          | App no encontrada: 'integra'
+2026-08-07 00:49:25 | INFO     | jarvis.voz           | TTS: No encontré ninguna aplicación llamada 'integra'. ¿Puedes intentarlo con otro nombre?
+2026-08-07 00:49:33 | INFO     | jarvis.escucha       | Texto reconocido: 'abrir integrador'
+2026-08-07 00:49:33 | INFO     | jarvis.main          | Usuario dijo: 'abrir integrador'
+2026-08-07 00:49:33 | INFO     | jarvis.cerebro       | Procesando: 'abrir integrador' (estado=ESCUCHANDO)
+2026-08-07 00:49:33 | INFO     | jarvis.nlp           | NLP: 'abrir integrador' → intent=ABRIR_APP (100%) ent={'app': 'integrador'}
+2026-08-07 00:49:33 | INFO     | jarvis.apps          | App encontrada (fuzzy): 'integrador' → 'Google Chrome' (score=74)
+2026-08-07 00:49:33 | INFO     | jarvis.apps          | App lanzada: 'Google Chrome' → ['/usr/bin/google-chrome-stable']
+2026-08-07 00:49:33 | INFO     | jarvis.voz           | TTS: Aquí vamos Google Chrome.
+2026-08-07 00:49:51 | INFO     | jarvis.escucha       | Texto reconocido: 'abrir integrador'
+2026-08-07 00:49:51 | INFO     | jarvis.main          | Usuario dijo: 'abrir integrador'
+2026-08-07 00:49:51 | INFO     | jarvis.cerebro       | Procesando: 'abrir integrador' (estado=ESCUCHANDO)
+2026-08-07 00:49:51 | INFO     | jarvis.nlp           | NLP: 'abrir integrador' → intent=ABRIR_APP (100%) ent={'app': 'integrador'}
+2026-08-07 00:49:51 | INFO     | jarvis.apps          | App encontrada (fuzzy): 'integrador' → 'Google Chrome' (score=74)
+2026-08-07 00:49:51 | INFO     | jarvis.apps          | App lanzada: 'Google Chrome' → ['/usr/bin/google-chrome-stable']
+2026-08-07 00:49:51 | INFO     | jarvis.voz           | TTS: En un momento Google Chrome.
+2026-08-07 00:50:09 | INFO     | jarvis.voz           | TTS: Sistema interrumpido. Hasta luego.
